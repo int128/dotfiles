@@ -11,13 +11,13 @@ Setting up
 
 Append following to your `.bashrc`
 
-```
+```bash
 . ~/dotfiles/.bashrc
 ```
 
 Append following to your `.bash_profile`
 
-```
+```bash
 . ~/dotfiles/.bash_profile
 
 # if needed
@@ -35,8 +35,6 @@ Platform dependent issues
 
 ### Cygwin
 
-See `cygwin` folder.
-
-* Mount `c:/Users` to `/home` for interoperability. Use fstab.
-
-
+* Apply `cygwin/fstab` in order to mount `c:/Users` to `/home`.
+* Install [Menlo font](https://github.com/hbin/top-programming-fonts).
+* Install [git-credential-winstore](http://gitcredentialstore.codeplex.com).
