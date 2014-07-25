@@ -22,7 +22,7 @@ PS1='\e[32m\u@\h \e[34m\w \e[33m[\t \d]\e[00m\n$ '
 function enable_global_proxy () {
   local port="$1"
   local host="$2"
-  [ -z "$host" ] && host='localhost'
+  [ -z "$host" ] && host='127.0.0.1'
 
   export http_proxy="http://$host:$port/"
   export https_proxy="$http_proxy"
