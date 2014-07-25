@@ -1,0 +1,15 @@
+BoldAsFont=yes
+ForegroundColour=0,0,0
+BackgroundColour=255,255,255
+CursorColour=0,0,255
+FontHeight=10
+Locale=ja_JP
+Charset=UTF-8
+Columns=100
+Rows=60
+Font=Menlo
+CursorType=block
+CursorBlinks=no
+ScrollbackLines=1000
+Term=xterm-256color
+BoldAsColour=no
