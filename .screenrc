@@ -307,6 +307,7 @@ defnonblock on
 
 # hardstatus alwaysignore
 # hardstatus alwayslastline "%Lw"
+hardstatus alwayslastline " %`%-w%{=b bw}%n %t%{-}%+w  %02c"
 
 # Resize the current region. The space will be removed from or added to
 # the region below or if there's not enough space from the region above.
