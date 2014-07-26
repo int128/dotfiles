@@ -12,6 +12,19 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
+autoload -U compinit
+compinit -u
+
+autoload vcs_info
+precmd () { vcs_info }
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats       '%F{white}-> %F{green}%b%f'
+zstyle ':vcs_info:*' actionformats '%F{white}-> %F{green}%b%F{white}:%F{green}%a%f'
+
+setopt prompt_subst
+setopt transient_rprompt
+setopt magic_equal_subst
+
 function set_prompt () {
   local dir='%F{blue}%B%~%b%f'
   local now='%F{yellow}%T%f'
@@ -21,14 +34,10 @@ function set_prompt () {
   else
     local host="%F{green}%n%F{white}(%F{green}%m %F{white}<- %B${${=SSH_CLIENT}[1]}%b%F{white})%f"
   fi
-  PROMPT="$now $dir $host $rc"$'\n%# '
+  PROMPT="$now $dir $host"$' $vcs_info_msg_0_\n%# '
+  RPROMPT="$rc"
 }
 set_prompt
-
-autoload -U compinit
-compinit -u
-
-setopt magic_equal_subst
 
 #
 # Environment and aliases
