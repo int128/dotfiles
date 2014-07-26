@@ -14,6 +14,20 @@ export EDITOR=vim
 PS1='\e[32m\u@\h \e[34m\w \e[33m[\t \d]\e[00m\n$ '
 
 
+# Enable ssh agent forwarding if socket exists.
+setup_ssh_auth_sock () {
+  local agent="$1"
+  if [ -S "$agent" ]; then
+    export SSH_AUTH_SOCK="$agent"
+  elif [ ! -S "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK="$agent"
+  elif [ ! -L "$SSH_AUTH_SOCK" ]; then
+    ln -snf "$SSH_AUTH_SOCK" "$agent" && export SSH_AUTH_SOCK="$agent"
+  fi
+}
+setup_ssh_auth_sock "$HOME/.ssh/.agent-$(hostname)"
+
+
 # Enable the global proxy.
 #
 # enable_global_proxy 9090
