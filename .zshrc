@@ -12,8 +12,18 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
-PROMPT='%F{blue}%~%f %# '
-RPROMPT='%F{green}%n@%m%f %F{yellow}%T%f'
+function set_prompt () {
+  local dir='%F{blue}%B%~%b%f'
+  local now='%F{yellow}%T%f'
+  local rc='%F{white}=> %(?,%F{white},%F{red})%?%f'
+  if [[ -z "$SSH_CLIENT" ]]; then
+    local host='%F{green}%n%F{white}(%F{green}%m%F{white})%f'
+  else
+    local host="%F{green}%n%F{white}(%F{green}%m %F{white}<- %B${${=SSH_CLIENT}[1]}%b%F{white})%f"
+  fi
+  PROMPT="$now $dir $host $rc"$'\n%# '
+}
+set_prompt
 
 autoload -U compinit
 compinit -u
