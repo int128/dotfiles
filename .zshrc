@@ -1,6 +1,24 @@
 # .zshrc
 
 #
+# Environment and aliases
+#
+export EDITOR=vim
+
+case "$(uname)" in
+  Linux | CYGWIN*)
+    alias ls='ls --color=auto'
+    ;;
+
+  Darwin)
+    alias ls='ls -G'
+    ;;
+esac
+
+alias ll='ls -la'
+
+
+#
 # General settings
 #
 
@@ -45,22 +63,6 @@ function set_prompt () {
 }
 set_prompt
 
-#
-# Environment and aliases
-#
-export EDITOR=vim
-
-case "$(uname)" in
-  Linux | CYGWIN*)
-    alias ls='ls --color=auto'
-    ;;
-
-  Darwin)
-    alias ls='ls -G'
-    ;;
-esac
-
-alias ll='ls -la'
 
 #
 # Functions
