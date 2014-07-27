@@ -7,21 +7,26 @@ Dot files of my environment.
 Setting up
 ----------
 
-### bash
+### zsh
 
-Append following to your `.bashrc`
+Symlink `.zshrc` and create `.zshrc.local` if needed.
 
-```bash
-. ~/dotfiles/.bashrc
+```zsh
+# .zshrc.local
+enable_proxy
 ```
 
-Append following to your `.bash_profile`
+
+### bash
+
+Append following to your `.bash_profile` and `.bashrc`.
 
 ```bash
+# .bash_profile
 . ~/dotfiles/.bash_profile
 
-# if needed
-enable_global_proxy 9090
+# .bashrc
+. ~/dotfiles/.bashrc
 ```
 
 
