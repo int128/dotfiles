@@ -12,6 +12,8 @@ case "$(uname)" in
 
   Darwin)
     alias ls='ls -G'
+
+    export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:'
     ;;
 esac
 
@@ -38,6 +40,9 @@ autoload -U compinit
 compinit -u
 
 setopt magic_equal_subst
+
+zstyle ':completion:*:default' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Prompt
 autoload vcs_info
