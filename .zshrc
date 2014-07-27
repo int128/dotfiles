@@ -80,7 +80,7 @@ function setup_ssh_auth_sock () {
 setup_ssh_auth_sock "$HOME/.ssh/.agent-$(hostname)"
 
 
-# Enable proxy settings if needed
+# Enable proxy settings if needed (call in ~/.zshrc.local)
 function enable_proxy () {
   local port="$1"
   local host="$2"
@@ -92,3 +92,14 @@ function enable_proxy () {
   export GRADLE_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port"
 }
 
+
+#
+# More
+#
+
+# Apply environment specific settings if exists
+[ -f '~/.zshrc.local' ] && . '~/.zshrc.local'
+
+
+# Set final return value to 0 (shown in prompt)
+true
