@@ -1,20 +1,27 @@
 # .zshrc
 
 #
-# zsh settings
+# General settings
 #
+
+# Key bindings
 bindkey -e
 
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
+# History
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Completion
 autoload -U compinit
 compinit -u
 
+setopt magic_equal_subst
+
+# Prompt
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
@@ -23,7 +30,6 @@ zstyle ':vcs_info:*' actionformats '%F{white}-> %F{green}%b%F{white}:%F{green}%a
 
 setopt prompt_subst
 setopt transient_rprompt
-setopt magic_equal_subst
 
 function set_prompt () {
   local dir='%F{blue}%B%~%b%f'
@@ -74,7 +80,7 @@ function setup_ssh_auth_sock () {
 setup_ssh_auth_sock "$HOME/.ssh/.agent-$(hostname)"
 
 
-# Enable the proxy settings.
+# Enable proxy settings if needed
 function enable_proxy () {
   local port="$1"
   local host="$2"
