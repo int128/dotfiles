@@ -109,7 +109,7 @@ function enable_proxy () {
 #
 
 # Apply environment specific settings if exists
-[ -f '~/.zshrc.local' ] && . '~/.zshrc.local'
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 
 # Set final return value to 0 (shown in prompt)
