@@ -34,6 +34,14 @@ bindkey -e
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
+bindkey "^[[5~" history-beginning-search-backward
+bindkey "^[[6~" history-beginning-search-forward
+
+# Key bindings for mintty
+bindkey '\e[H'  beginning-of-line
+bindkey '\e[F'  end-of-line
+bindkey '\e[3~' delete-char
+
 # History
 HISTFILE=~/.zhistory
 HISTSIZE=10000
