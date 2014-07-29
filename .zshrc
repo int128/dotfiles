@@ -42,6 +42,10 @@ bindkey '\e[H'  beginning-of-line
 bindkey '\e[F'  end-of-line
 bindkey '\e[3~' delete-char
 
+# Key bindings for tmux
+bindkey '^[[1~'  beginning-of-line
+bindkey '^[[4~'  end-of-line
+
 # History
 HISTFILE=~/.zhistory
 HISTSIZE=10000
