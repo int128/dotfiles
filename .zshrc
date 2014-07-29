@@ -118,6 +118,9 @@ function {
 # More
 #
 
+# Enable nvm if exists
+[ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
+
 # Apply environment specific settings if exists
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
