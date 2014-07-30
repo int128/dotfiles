@@ -29,3 +29,16 @@ set tabstop=2
 set expandtab
 set smarttab
 
+" NeoBundle
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundle 'https://github.com/Shougo/neobundle.vim'
+NeoBundle 'https://github.com/scrooloose/nerdtree.git'
+NeoBundle 'https://github.com/tpope/vim-surround'
+NeoBundle 'https://github.com/airblade/vim-gitgutter'
+NeoBundle 'https://github.com/kchmck/vim-coffee-script'
+
+call neobundle#end()
+filetype plugin indent on
+
