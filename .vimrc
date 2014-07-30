@@ -3,10 +3,11 @@
 set nocompatible
 
 set backup
-set backupdir=~/.vim/
+set backupdir=~/.vim/tmp/
 set swapfile
-set directory=~/.vim/
-set noundofile
+set directory=~/.vim/tmp/
+set undofile
+set undodir=~/.vim/tmp/
 
 " Appearance
 set t_Co=256
