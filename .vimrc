@@ -2,12 +2,18 @@
 
 set nocompatible
 
+if has('win32') || has('win64')
+  let $dotvim=expand('~/dotfiles/.vim')
+else
+  let $dotvim=expand('~/.vim')
+endif
+
 set backup
-set backupdir=~/.vim/tmp/
+set backupdir=$dotvim/tmp/
 set swapfile
-set directory=~/.vim/tmp/
+set directory=$dotvim/tmp/
 set undofile
-set undodir=~/.vim/tmp/
+set undodir=$dotvim/tmp/
 
 " Appearance
 set t_Co=256
@@ -30,8 +36,8 @@ set expandtab
 set smarttab
 
 " NeoBundle
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath+=$dotvim/bundle/neobundle.vim/
+call neobundle#begin($dotvim . '/bundle/')
 
 NeoBundle 'https://github.com/Shougo/neobundle.vim'
 NeoBundle 'https://github.com/scrooloose/nerdtree.git'
