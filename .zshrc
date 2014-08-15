@@ -64,6 +64,8 @@ bindkey -e
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
+bindkey "^[[A"  history-beginning-search-backward
+bindkey "^[[B"  history-beginning-search-forward
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 
