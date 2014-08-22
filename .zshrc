@@ -63,11 +63,12 @@ bindkey -e
 
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
-
-bindkey "^[[A"  history-beginning-search-backward
-bindkey "^[[B"  history-beginning-search-forward
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
+
+# Key bindings for OS X
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
 
 # Key bindings for mintty
 bindkey '\e[H'  beginning-of-line
