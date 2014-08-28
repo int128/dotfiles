@@ -50,7 +50,7 @@ function enable_proxy () {
 
   export http_proxy="http://$host:$port/"
   export https_proxy="$http_proxy"
-  export GRADLE_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port"
+  export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
 }
 
 
