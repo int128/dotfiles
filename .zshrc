@@ -53,6 +53,18 @@ function enable_proxy () {
   export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
 }
 
+# Docker: enter into the container
+function docker-enter () {
+  local container="$1"
+  local cmd="$2"
+  [ -z "$cmd" ] && cmd='/bin/bash'
+  if [ -z "$container" ]; then
+    echo "Usage: sudo $0 CONTAINER"
+    return 1
+  fi
+  nsenter -m -u -i -n -p -t "$(docker inspect --format {{.State.Pid}} "$container")" "$cmd"
+}
+
 
 #
 # General settings
