@@ -56,13 +56,14 @@ function enable_proxy () {
 # Docker: enter into the container
 function docker-enter () {
   local container="$1"
-  local cmd="$2"
-  [ -z "$cmd" ] && cmd='/bin/bash'
   if [ -z "$container" ]; then
-    echo "Usage: sudo $0 CONTAINER"
+    echo "Usage: $0 CONTAINER [COMMAND ARGS...]"
+    echo
+    docker ps
     return 1
   fi
-  nsenter -m -u -i -n -p -t "$(docker inspect --format {{.State.Pid}} "$container")" "$cmd"
+  shift
+  sudo nsenter -m -u -i -n -p -t "$(docker inspect --format {{.State.Pid}} "$container")" "$@"
 }
 
 
