@@ -29,18 +29,40 @@ enable_proxy
 Run `.vim/install.sh` to install NeoBundle.
 
 
-Platform dependent issues
--------------------------
+Cygwin specific
+---------------
 
-### Cygwin
+Install [Cygwin](https://www.cygwin.com) with following packages.
 
-* Apply `cygwin/fstab` in order to mount `c:/Users` to `/home`.
-* Install [Menlo font](https://github.com/hbin/top-programming-fonts).
-* Install [git-credential-winstore](http://gitcredentialstore.codeplex.com).
+* openssh
+* git
+* wget
+* zsh
 
+Run following and restart Cygwin to mount Windows home.
 
-### Windows
+```zsh
+echo 'C:/Users /home ntfs override,binary,auto 0 0' >> /etc/fstab
+```
 
-* Copy `_vimrc` and `_gvimrc` to your home.
-* Install [Migu font](http://mix-mplus-ipa.sourceforge.jp/migu/).
+Clone dotfiles repository and install it.
+
+```zsh
+./install.sh
+```
+
+Install following.
+
+* [git-credential-winstore](http://gitcredentialstore.codeplex.com)
+
+Configure.
+
+```zsh
+./cygwin_configure.sh
+```
+
+Additionally install following.
+
+* [Menlo font](https://github.com/hbin/top-programming-fonts)
+* [Migu font](http://sourceforge.jp/projects/mix-mplus-ipa/releases/)
 
