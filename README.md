@@ -4,12 +4,19 @@ dotfiles
 Dot files of my environment.
 
 
-Setting up
-----------
+Install
+-------
+
+Clone the repository into your home and run the installation script.
+
+```zsh
+./install.sh
+```
+
 
 ### zsh
 
-Symlink `.zshrc` and create `.zshrc.local` if needed.
+Create `.zshrc.local` if needed.
 
 ```zsh
 # .zshrc.local
