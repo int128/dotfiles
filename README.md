@@ -24,24 +24,6 @@ enable_proxy
 ```
 
 
-### bash
-
-Append following to your `.bash_profile` and `.bashrc`.
-
-```bash
-# .bash_profile
-. ~/dotfiles/.bash_profile
-
-# .bashrc
-. ~/dotfiles/.bashrc
-```
-
-
-### others
-
-Symlink dot files if needed.
-
-
 Platform dependent issues
 -------------------------
 
