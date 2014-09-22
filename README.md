@@ -24,6 +24,11 @@ enable_proxy
 ```
 
 
+### vim
+
+Run `.vim/install.sh` to install NeoBundle.
+
+
 Platform dependent issues
 -------------------------
 
