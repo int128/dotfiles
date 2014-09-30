@@ -53,6 +53,11 @@ function enable_proxy () {
   export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
 }
 
+# Prefix for command without proxy
+function without_proxy() {
+  http_proxy= https_proxy= "$@"
+}
+
 # Docker: enter into the container
 function docker-enter () {
   local container="$1"
