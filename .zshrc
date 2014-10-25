@@ -79,23 +79,29 @@ function docker-enter () {
 # Key bindings
 bindkey -e
 
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
+# ctrl+arrow
+# - iterm
+bindkey '^[[1;5A' history-beginning-search-backward
+bindkey '^[[1;5B' history-beginning-search-forward
+bindkey '^[[1;5D' beginning-of-line
+bindkey '^[[1;5C' end-of-line
+# - iterm-linux-tmux
+bindkey '^[0A' history-beginning-search-backward
+bindkey '^[0B' history-beginning-search-forward
+bindkey '^[0D' beginning-of-line
+bindkey '^[0C' end-of-line
+
+# alt+arrow
+# - iterm
+# - iterm-linux-tmux
+bindkey '^[^[[C' forward-word
+bindkey '^[^[[D' backward-word
+
+# pageup, pagedown
+# - putty
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 
-# Key bindings for OS X
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
-
-# Key bindings for mintty
-bindkey '\e[H'  beginning-of-line
-bindkey '\e[F'  end-of-line
-bindkey '\e[3~' delete-char
-
-# Key bindings for tmux
-bindkey '^[[1~'  beginning-of-line
-bindkey '^[[4~'  end-of-line
 
 # History
 HISTFILE=~/.zhistory
