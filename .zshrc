@@ -83,19 +83,21 @@ bindkey -e
 # - iterm
 bindkey '^[[1;5A' history-beginning-search-backward
 bindkey '^[[1;5B' history-beginning-search-forward
-bindkey '^[[1;5D' beginning-of-line
-bindkey '^[[1;5C' end-of-line
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 # - iterm-linux-tmux
 bindkey '^[0A' history-beginning-search-backward
 bindkey '^[0B' history-beginning-search-forward
-bindkey '^[0D' beginning-of-line
-bindkey '^[0C' end-of-line
+bindkey '^[0D' backward-word
+bindkey '^[0C' forward-word
 
 # alt+arrow
 # - iterm
 # - iterm-linux-tmux
-bindkey '^[^[[C' forward-word
-bindkey '^[^[[D' backward-word
+#bindkey '^[^[[A'
+#bindkey '^[^[[B'
+bindkey '^[^[[D' beginning-of-line
+bindkey '^[^[[C' end-of-line
 
 # pageup, pagedown
 # - putty
