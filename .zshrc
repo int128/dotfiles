@@ -86,10 +86,10 @@ bindkey '^[[1;5B' history-beginning-search-forward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 # - iterm-linux-tmux
-bindkey '^[0A' history-beginning-search-backward
-bindkey '^[0B' history-beginning-search-forward
-bindkey '^[0D' backward-word
-bindkey '^[0C' forward-word
+bindkey '^[OA' history-beginning-search-backward
+bindkey '^[OB' history-beginning-search-forward
+bindkey '^[OD' backward-word
+bindkey '^[OC' forward-word
 
 # alt+arrow
 # - iterm
