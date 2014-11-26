@@ -155,9 +155,12 @@ if which ruby >/dev/null && which gem >/dev/null; then
   PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+
 # Apply environment specific settings if exists
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
-
 
 # Set final return value to 0 (shown in prompt)
 true
