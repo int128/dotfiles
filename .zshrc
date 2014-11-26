@@ -150,6 +150,9 @@ function {
 # Enable nvm if exists
 [ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
 
+# Add homebrew to path if exists
+[ -x ~/.homebrew/bin/brew ] && PATH="$HOME/.homebrew/bin:$PATH"
+
 # Add rubygems to path if exists
 if which ruby >/dev/null && which gem >/dev/null; then
   PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
