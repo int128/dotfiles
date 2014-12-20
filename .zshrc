@@ -71,6 +71,11 @@ function docker-enter () {
   sudo nsenter -m -u -i -n -p -t "$(docker inspect --format {{.State.Pid}} "$container")" "$@"
 }
 
+# OS X Terminal App with sudo privileges
+function sudo-term () {
+  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
+}
+
 
 #
 # General settings
