@@ -149,24 +149,28 @@ function {
 
 
 #
-# More
+# Development Tools
 #
 
-# Enable nvm if exists
-[ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
-
-# Add homebrew to path if exists
+# Homebrew
 [ -x ~/.homebrew/bin/brew ] && PATH="$HOME/.homebrew/bin:$PATH"
 
-# Add rubygems to path if exists
+# Travis CI
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+# Node.js
+[ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
+
+# RubyGems
 if which ruby >/dev/null && which gem >/dev/null; then
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
 fi
 
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
+#
+# More
+#
 
 # Apply environment specific settings if exists
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
