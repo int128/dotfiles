@@ -179,6 +179,9 @@ if which appcfg.sh 2>/dev/null; then
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 fi
 
+# PostgreSQL
+[ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
+
 
 #
 # More
