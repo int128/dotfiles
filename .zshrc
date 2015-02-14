@@ -154,7 +154,10 @@ function {
 #
 
 # Homebrew
-[ -x ~/.homebrew/bin/brew ] && PATH="$HOME/.homebrew/bin:$PATH"
+if [ -x ~/.homebrew/bin/brew ]; then
+  export PATH="$HOME/.homebrew/bin:$PATH"
+  export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
+fi
 
 # Travis CI
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
