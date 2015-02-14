@@ -167,6 +167,14 @@ if which ruby >/dev/null && which gem >/dev/null; then
   export PATH="$GEM_HOME/bin:$PATH"
 fi
 
+# app-engine-java-sdk
+if which appcfg.sh >/dev/null; then
+  local appcfg_path="$(which appcfg.sh)"
+  local appcfg_link="$(readlink "$appcfg_path")"
+  export APPENGINE_SDK_HOME="$(dirname "$appcfg_path")/$(dirname "$appcfg_link")/../libexec"
+  export APPENGINE_HOME="$APPENGINE_SDK_HOME"
+fi
+
 
 #
 # More
