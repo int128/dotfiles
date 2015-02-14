@@ -128,22 +128,21 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       '%F{white}-> %F{green}%b%f'
-zstyle ':vcs_info:*' actionformats '%F{white}-> %F{green}%b%F{white}:%F{green}%a%f'
+zstyle ':vcs_info:*' formats       '%{%F{white}%}-> %{%F{green}%}%b%{%f%}'
+zstyle ':vcs_info:*' actionformats '%{%F{white}%}-> %{%F{green}%}%b%{%f%}:%{%F{green}%}%a%{%f%}'
 
 setopt prompt_subst
 setopt transient_rprompt
 
 function {
-  local dir='%F{blue}%B%~%b%f'
-  local now='%F{yellow}%T%f'
-  local rc='%F{white}=> %(?,%F{white},%F{red})%?%f'
-  if [[ -z "$SSH_CLIENT" ]]; then
-    local host='%F{green}%n%F{white}(%F{green}%m%F{white})%f'
-  else
-    local host="%F{green}%n%F{white}(%F{green}%m %F{white}<- %B${${=SSH_CLIENT}[1]}%b%F{white})%f"
-  fi
-  PROMPT="$now $dir $host"$' $vcs_info_msg_0_\n%# '
+  local dir='%{%F{blue}%B%}%~%{%b%f%}'
+  local now='%{%F{yellow}%}%T%{%f%}'
+  local rc='%{%F{white}%}=> %{%(?,%F{white},%F{red})%}%?%{%f%}'
+  local user='%{%F{green}%}%n%{%f%}'
+  local host='%{%F{green}%}%m%{%f%}'
+  [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
+  local git='$vcs_info_msg_0_'
+  PROMPT="$now $dir $user($host$via) $git"$'\n%# '
   RPROMPT="$rc"
 }
 
