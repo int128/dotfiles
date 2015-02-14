@@ -128,8 +128,11 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       $'\U1F500  %{%F{blue}%}%b%{%f%}'
-zstyle ':vcs_info:*' actionformats $'\U1F500  %{%F{blue}%}%b%{%f%} \U1F527  %{%F{blue}%}%a%{%f%}'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats       $'%u%c\U1F500  %{%F{blue}%}%b%{%f%}'
+zstyle ':vcs_info:*' actionformats $'%u%c\U1F500  %{%F{blue}%}%b%{%f%} \U1F527  %{%F{blue}%}%a%{%f%}'
+zstyle ':vcs_info:*' unstagedstr   $'\U1F53D  '
+zstyle ':vcs_info:*' stagedstr     $'\U1F53C  '
 
 setopt prompt_subst
 setopt transient_rprompt
