@@ -140,13 +140,12 @@ setopt transient_rprompt
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%R %b-%d}%{%f%}'
-  local rc=$'%{%(?,%F{white},%F{red})%}=> %?%{%f%} %(?,\U2705,\U274C)'
+  local rc=$'%(?,\U2705 ,\U274C )'
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
   local git='$vcs_info_msg_0_'
-  PROMPT="$now $dir $user($host$via) $git"$'\n%# '
-  RPROMPT="$rc"
+  PROMPT="$now $dir $user($host$via) $rc $git"$'\n%# '
 }
 
 
