@@ -128,8 +128,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       '%{%F{white}%}-> %{%F{green}%}%b%{%f%}'
-zstyle ':vcs_info:*' actionformats '%{%F{white}%}-> %{%F{green}%}%b%{%f%}:%{%F{green}%}%a%{%f%}'
+zstyle ':vcs_info:*' formats       $'\U1F500  %{%F{blue}%}%b%{%f%}'
+zstyle ':vcs_info:*' actionformats $'\U1F500  %{%F{blue}%}%b%{%f%} \U1F527  %{%F{blue}%}%a%{%f%}'
 
 setopt prompt_subst
 setopt transient_rprompt
@@ -137,7 +137,7 @@ setopt transient_rprompt
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%T%{%f%}'
-  local rc='%{%F{white}%}=> %{%(?,%F{white},%F{red})%}%?%{%f%}'
+  local rc=$'%{%(?,%F{white},%F{red})%}=> %?%{%f%} %(?,\U2705,\U274C)'
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
