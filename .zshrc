@@ -160,7 +160,8 @@ function {
 
 # Add rubygems to path if exists
 if which ruby >/dev/null && which gem >/dev/null; then
-  PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+  export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
+  export PATH="$GEM_HOME/bin:$PATH"
 fi
 
 # added by travis gem
