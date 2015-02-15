@@ -166,13 +166,13 @@ fi
 [ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
 
 # RubyGems
-if which ruby 2>/dev/null && which gem 2>/dev/null; then
+if which ruby >/dev/null 2>/dev/null && which gem >/dev/null 2>/dev/null; then
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
 fi
 
 # app-engine-java-sdk
-if which appcfg.sh 2>/dev/null; then
+if which appcfg.sh >/dev/null 2>/dev/null; then
   local appcfg_path="$(which appcfg.sh)"
   local appcfg_link="$(readlink "$appcfg_path")"
   export APPENGINE_SDK_HOME="$(dirname "$appcfg_path")/$(dirname "$appcfg_link")/../libexec"
