@@ -165,7 +165,12 @@ fi
 # Node.js
 [ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
 
-# RubyGems
+# Ruby
+if [ -x ~/.rbenv/bin/rbenv ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 if which ruby >/dev/null 2>/dev/null && which gem >/dev/null 2>/dev/null; then
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
