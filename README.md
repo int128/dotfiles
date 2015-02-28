@@ -10,23 +10,25 @@ Install
 Clone the repository into your home and run the installation script.
 
 ```zsh
-./install.sh
+git clone https://github.com/int128/dotfiles.git
+dotfiles/install.sh
 ```
 
-
-### zsh
-
-Create `.zshrc.local` if needed.
+Install VIM NeoBundle.
 
 ```zsh
-# .zshrc.local
-enable_proxy
+.vim/install.sh
 ```
 
 
-### vim
+### Environment specific
 
-Run `.vim/install.sh` to install NeoBundle.
+Put environment specific configurations into `.zshrc.local`:
+
+```zsh
+# Enable proxy
+enable_proxy
+```
 
 
 Cygwin specific
