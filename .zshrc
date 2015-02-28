@@ -187,6 +187,10 @@ fi
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
+# Google Cloud Platform
+[ -f ~/Library/google-cloud-sdk/path.zsh.inc ] && . ~/Library/google-cloud-sdk/path.zsh.inc
+[ -f ~/Library/google-cloud-sdk/completion.zsh.inc ] && . ~/Library/google-cloud-sdk/completion.zsh.inc
+
 
 #
 # More
