@@ -154,39 +154,38 @@ function {
 #
 
 # Homebrew
-if [ -x ~/.homebrew/bin/brew ]; then
+[ -x ~/.homebrew/bin/brew ] && {
   export PATH="$HOME/.homebrew/bin:$PATH"
   export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
-fi
+}
 
 # Travis CI
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
 
 # Node.js
 [ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
 
 # Ruby
-if [ -x ~/.rbenv/bin/rbenv ]; then
+[ -x ~/.rbenv/bin/rbenv ] && {
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
-fi
+}
 
-if which ruby >/dev/null 2>/dev/null && which gem >/dev/null 2>/dev/null; then
+which gem >/dev/null 2>/dev/null && {
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
-fi
+}
 
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Google Cloud Platform
-[ -f ~/Library/google-cloud-sdk/path.zsh.inc ] && . ~/Library/google-cloud-sdk/path.zsh.inc
-[ -f ~/Library/google-cloud-sdk/completion.zsh.inc ] && . ~/Library/google-cloud-sdk/completion.zsh.inc
-
-if [ -d ~/Library/google-cloud-sdk/platform/appengine-java-sdk ]; then
+[ -d ~/Library/google-cloud-sdk ] && {
+  . ~/Library/google-cloud-sdk/path.zsh.inc
+  . ~/Library/google-cloud-sdk/completion.zsh.inc
   export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/appengine-java-sdk"
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
-fi
+}
 
 
 #
