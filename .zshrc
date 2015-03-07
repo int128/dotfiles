@@ -176,20 +176,17 @@ if which ruby >/dev/null 2>/dev/null && which gem >/dev/null 2>/dev/null; then
   export PATH="$GEM_HOME/bin:$PATH"
 fi
 
-# app-engine-java-sdk
-if which appcfg.sh >/dev/null 2>/dev/null; then
-  local appcfg_path="$(which appcfg.sh)"
-  local appcfg_link="$(readlink "$appcfg_path")"
-  export APPENGINE_SDK_HOME="$(dirname "$appcfg_path")/$(dirname "$appcfg_link")/../libexec"
-  export APPENGINE_HOME="$APPENGINE_SDK_HOME"
-fi
-
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Google Cloud Platform
 [ -f ~/Library/google-cloud-sdk/path.zsh.inc ] && . ~/Library/google-cloud-sdk/path.zsh.inc
 [ -f ~/Library/google-cloud-sdk/completion.zsh.inc ] && . ~/Library/google-cloud-sdk/completion.zsh.inc
+
+if [ -d ~/Library/google-cloud-sdk/platform/appengine-java-sdk ]; then
+  export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/appengine-java-sdk"
+  export APPENGINE_HOME="$APPENGINE_SDK_HOME"
+fi
 
 
 #
