@@ -66,5 +66,5 @@ Configure.
 Additionally install following.
 
 * [Menlo font](https://github.com/hbin/top-programming-fonts)
-* [Migu font](http://sourceforge.jp/projects/mix-mplus-ipa/releases/)
+* [Migu-1m font](http://sourceforge.jp/projects/mix-mplus-ipa/releases/)
 
