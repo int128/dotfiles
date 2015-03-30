@@ -1,0 +1,14 @@
+[merge]
+  ff = false
+[pull]
+  rebase = true
+[push]
+  default = tracking
+[alias]
+  ci = commit
+  co = checkout
+  ls = log --stat --decorate --find-renames
+  st = status --short --branch
+  graph = log --graph --decorate --oneline
+  delete-origin-branch = push origin --delete
+
