@@ -48,5 +48,7 @@ if [ "$os" == "Cygwin" ]; then
   install_copy _gvimrc
 fi
 
+chmod -v 700 "$HOME/dotfiles/.vim/tmp"
+
 git config --global include.path "$HOME/dotfiles/.gitconfig"
 
