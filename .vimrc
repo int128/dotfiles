@@ -19,7 +19,7 @@ set runtimepath+=$dotvim/bundle/neobundle.vim/
 call neobundle#begin($dotvim . '/bundle/')
 
 NeoBundle 'https://github.com/Shougo/neobundle.vim'
-NeoBundle 'https://github.com/scrooloose/nerdtree.git'
+NeoBundle 'https://github.com/scrooloose/nerdtree'
 NeoBundle 'https://github.com/tpope/vim-surround'
 NeoBundle 'https://github.com/itchyny/lightline.vim'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
