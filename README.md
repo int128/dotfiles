@@ -66,15 +66,11 @@ Install VIM NeoBundle.
 
 ### Additional
 
-Install following.
+Install [git-credential-winstore](http://gitcredentialstore.codeplex.com) manually.
 
-* [git-credential-winstore](http://gitcredentialstore.codeplex.com)
-* [Menlo font](https://github.com/hbin/top-programming-fonts)
-* [Migu-1m font](http://sourceforge.jp/projects/mix-mplus-ipa/releases/)
-
-Configure.
+Then, install additional packages.
 
 ```zsh
-./cygwin_configure.sh
+cygwin/install.sh
 ```
 
