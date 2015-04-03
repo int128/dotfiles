@@ -187,6 +187,9 @@ which gem >/dev/null 2>/dev/null && {
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 }
 
+# MacVim
+[ -x /Applications/MacVim.app/Contents/MacOS/mvim ] && alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
+
 
 #
 # More

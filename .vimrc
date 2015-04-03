@@ -31,8 +31,8 @@ filetype plugin indent on
 
 " Appearance
 set t_Co=256
-autocmd ColorScheme * highlight LineNr ctermfg=7 guifg=#888888
-colorscheme default
+autocmd ColorScheme * highlight LineNr ctermfg=8 guifg=#888888
+colorscheme slate
 syntax on
 
 set number
