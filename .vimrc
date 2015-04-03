@@ -21,7 +21,9 @@ call neobundle#begin($dotvim . '/bundle/')
 NeoBundle 'https://github.com/Shougo/neobundle.vim'
 NeoBundle 'https://github.com/scrooloose/nerdtree.git'
 NeoBundle 'https://github.com/tpope/vim-surround'
+NeoBundle 'https://github.com/itchyny/lightline.vim'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
+
 NeoBundle 'https://github.com/kchmck/vim-coffee-script'
 
 call neobundle#end()
@@ -37,6 +39,7 @@ set number
 set cursorline
 set showmatch
 set wildmenu
+set laststatus=2
 
 " Operability
 set incsearch
