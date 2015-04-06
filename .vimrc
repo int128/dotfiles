@@ -25,6 +25,7 @@ NeoBundle 'https://github.com/itchyny/lightline.vim'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
 
 NeoBundle 'https://github.com/kchmck/vim-coffee-script'
+NeoBundle 'https://github.com/dagwieers/asciidoc-vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -50,6 +51,8 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 set smarttab
+
+autocmd BufNewFile,BufRead *.adoc setlocal filetype=asciidoc
 
 " Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
