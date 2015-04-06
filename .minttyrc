@@ -1,13 +1,13 @@
 BoldAsFont=yes
 ForegroundColour=255,255,255
-BackgroundColour=0,0,0
+BackgroundColour=20,20,20
 CursorColour=0,255,0
-FontHeight=10
+FontHeight=12
 Locale=ja_JP
 Charset=UTF-8
 Columns=140
 Rows=40
-Font=Menlo
+Font=MeiryoKe_Console
 CursorType=block
 CursorBlinks=no
 ScrollbackLines=1000

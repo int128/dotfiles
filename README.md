@@ -68,6 +68,8 @@ Install VIM NeoBundle.
 
 Install [git-credential-winstore](http://gitcredentialstore.codeplex.com) manually.
 
+Generate [MeiryoKe font family](http://web1.nazca.co.jp/hp/nzkchicagob/m6x9801/mrktb4br6.html) manually.
+
 Then, install additional packages.
 
 ```zsh

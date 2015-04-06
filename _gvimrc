@@ -2,5 +2,5 @@
 
 source ~/dotfiles/.gvimrc
 
-set guifont=Migu_1M:h12
+set guifont=MeiryoKe_Gothic:h14
 

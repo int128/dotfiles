@@ -18,7 +18,3 @@ apt-cyg install unzip
 # top-programming-fonts
 git clone https://github.com/hbin/top-programming-fonts.git
 
-# migu-1m
-curl -LO "http://sourceforge.jp/projects/mix-mplus-ipa/downloads/59022/migu-1m-20130617.zip"
-unzip migu-1m-20130617.zip
-
