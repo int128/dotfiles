@@ -1,8 +1,11 @@
 " .gvimrc
 
 colorscheme evening
-
-set guifont=Menlo:h14
 set columns=120
 set lines=40
 
+if has('win32') || has('win64')
+  set guifont=MeiryoKe_Gothic:h14
+else
+  set guifont=Menlo:h14
+end

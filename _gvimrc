@@ -1,6 +1,2 @@
 " _gvimrc: GVIM settings for Windows
-
 source ~/dotfiles/.gvimrc
-
-set guifont=MeiryoKe_Gothic:h14
-
