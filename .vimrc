@@ -1,5 +1,6 @@
 " .vimrc
 scriptencoding utf-8
+set encoding=utf-8
 
 if has('win32') || has('win64')
   let $dotvim=expand('~/dotfiles/.vim')
