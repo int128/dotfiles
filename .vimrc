@@ -54,6 +54,7 @@ set expandtab
 set smarttab
 
 autocmd BufNewFile,BufRead *.adoc setlocal filetype=asciidoc
+autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
 
 " Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
