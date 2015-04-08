@@ -46,7 +46,7 @@ Install [Cygwin](https://www.cygwin.com) with following packages.
 Run following and restart Cygwin to mount Windows home.
 
 ```zsh
-echo 'C:/Users /home ntfs override,binary,auto 0 0' >> /etc/fstab
+echo 'C:/Users /home ntfs override,noacl,binary,auto 0 0' >> /etc/fstab
 ```
 
 ### Dotfiles
