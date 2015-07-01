@@ -10,5 +10,6 @@
   ls = log --stat --decorate --find-renames
   st = status --short --branch
   graph = log --graph --decorate --oneline
-  delete-origin-branch = push origin --delete
+  pushoriginmaster = push origin master
+  fetchorigin = fetch origin
 
