@@ -114,6 +114,12 @@ function without_proxy() {
   http_proxy= https_proxy= "$@"
 }
 
+# Enable Docker Machine (call in ~/.zshrc.local)
+function enable_docker_machine () {
+  local machine="$1"
+  eval "$(docker-machine env "$machine")"
+}
+
 # OS X Terminal App with sudo privileges
 function sudo-term () {
   osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
