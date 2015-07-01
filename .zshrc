@@ -1,70 +1,6 @@
 # .zshrc
 
 #
-# Environment and aliases
-#
-export EDITOR=vim
-
-alias ll='ls -la'
-
-case "$(uname)" in
-  Linux | CYGWIN*)
-    alias ls='ls --color=auto'
-    ;;
-
-  Darwin)
-    alias ls='ls -G'
-
-    export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:'
-    ;;
-esac
-
-# Enable ssh agent forwarding if socket exists
-function {
-  local agent="$HOME/.ssh/.agent-$(hostname)"
-  if [ -S "$agent" ]; then
-    export SSH_AUTH_SOCK="$agent"
-  elif [ ! -S "$SSH_AUTH_SOCK" ]; then
-    export SSH_AUTH_SOCK="$agent"
-  elif [ ! -L "$SSH_AUTH_SOCK" ]; then
-    ln -snf "$SSH_AUTH_SOCK" "$agent" && export SSH_AUTH_SOCK="$agent"
-  fi
-}
-
-
-#
-# Functions
-#
-
-# tmux: attach or create session
-function t () {
-  tmux has-session 2> /dev/null && tmux attach || tmux
-}
-
-# Enable proxy settings (call in ~/.zshrc.local)
-function enable_proxy () {
-  local port="$1"
-  local host="$2"
-  [ -z "$port" ] && port='9090'
-  [ -z "$host" ] && host='127.0.0.1'
-
-  export http_proxy="http://$host:$port/"
-  export https_proxy="$http_proxy"
-  export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
-}
-
-# Prefix for command without proxy
-function without_proxy() {
-  http_proxy= https_proxy= "$@"
-}
-
-# OS X Terminal App with sudo privileges
-function sudo-term () {
-  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
-}
-
-
-#
 # General settings
 #
 
@@ -109,6 +45,10 @@ compinit -u
 setopt magic_equal_subst
 
 zstyle ':completion:*:default' menu select
+
+[ -z "$LS_COLORS" ] && {
+  LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:'
+}
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Prompt
@@ -137,8 +77,66 @@ function {
 
 
 #
-# Development Tools
+# Aliases and functions
 #
+
+case "$(uname)" in
+  Linux | CYGWIN*)
+    alias ls='ls --color=auto'
+    ;;
+  Darwin)
+    alias ls='ls -G'
+    alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
+    ;;
+esac
+
+alias ll='ls -la'
+
+# tmux: attach or create session
+function t () {
+  tmux has-session 2> /dev/null && tmux attach || tmux
+}
+
+# Enable proxy settings (call in ~/.zshrc.local)
+function enable_proxy () {
+  local port="$1"
+  local host="$2"
+  [ -z "$port" ] && port='9090'
+  [ -z "$host" ] && host='127.0.0.1'
+
+  export http_proxy="http://$host:$port/"
+  export https_proxy="$http_proxy"
+  export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
+}
+
+# Prefix for command without proxy
+function without_proxy() {
+  http_proxy= https_proxy= "$@"
+}
+
+# OS X Terminal App with sudo privileges
+function sudo-term () {
+  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
+}
+
+
+#
+# Environment
+#
+
+export EDITOR=vim
+
+# Enable ssh agent forwarding if socket exists
+function {
+  local agent="$HOME/.ssh/.agent-$(hostname)"
+  if [ -S "$agent" ]; then
+    export SSH_AUTH_SOCK="$agent"
+  elif [ ! -S "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK="$agent"
+  elif [ ! -L "$SSH_AUTH_SOCK" ]; then
+    ln -snf "$SSH_AUTH_SOCK" "$agent" && export SSH_AUTH_SOCK="$agent"
+  fi
+}
 
 # Homebrew
 [ -x ~/.homebrew/bin/brew ] && {
@@ -158,7 +156,7 @@ function {
   eval "$(rbenv init -)"
 }
 
-which gem >/dev/null 2>/dev/null && {
+whence gem >/dev/null && {
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
 }
@@ -173,9 +171,6 @@ which gem >/dev/null 2>/dev/null && {
   export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/appengine-java-sdk"
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 }
-
-# MacVim
-[ -x /Applications/MacVim.app/Contents/MacOS/mvim ] && alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
 
 
 #
