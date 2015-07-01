@@ -58,19 +58,6 @@ function without_proxy() {
   http_proxy= https_proxy= "$@"
 }
 
-# Docker: enter into the container
-function docker-enter () {
-  local container="$1"
-  if [ -z "$container" ]; then
-    echo "Usage: $0 CONTAINER [COMMAND ARGS...]"
-    echo
-    docker ps
-    return 1
-  fi
-  shift
-  sudo nsenter -m -u -i -n -p -t "$(docker inspect --format {{.State.Pid}} "$container")" "$@"
-}
-
 # OS X Terminal App with sudo privileges
 function sudo-term () {
   osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
