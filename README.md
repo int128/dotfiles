@@ -34,8 +34,6 @@ enable_proxy
 Install on Cygwin
 -----------------
 
-### Cygwin
-
 Install [Cygwin](https://www.cygwin.com) with following packages.
 
 * openssh
@@ -49,13 +47,20 @@ Run following and restart Cygwin to mount Windows home.
 echo 'C:/Users /home ntfs override,noacl,binary,auto 0 0' >> /etc/fstab
 ```
 
-### Dotfiles
-
-Clone dotfiles repository and install it.
+Clone the repository into your home and run the installation script.
 
 ```zsh
 git clone https://github.com/int128/dotfiles.git
 dotfiles/install.sh
+```
+
+Install additional packages.
+
+* [git-credential-winstore](http://gitcredentialstore.codeplex.com)
+* [MeiryoKe font family](http://web1.nazca.co.jp/hp/nzkchicagob/m6x9801/mrktb4br6.html)
+
+```zsh
+cygwin/install.sh
 ```
 
 Install VIM NeoBundle.
@@ -64,15 +69,12 @@ Install VIM NeoBundle.
 .vim/install.sh
 ```
 
-### Additional
+### Environment specific
 
-Install [git-credential-winstore](http://gitcredentialstore.codeplex.com) manually.
-
-Generate [MeiryoKe font family](http://web1.nazca.co.jp/hp/nzkchicagob/m6x9801/mrktb4br6.html) manually.
-
-Then, install additional packages.
+Put environment specific configurations into `.zshrc.local`:
 
 ```zsh
-cygwin/install.sh
+# Enable proxy
+enable_proxy
 ```
 
