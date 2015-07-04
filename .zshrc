@@ -70,17 +70,17 @@ zstyle ':vcs_info:*' stagedstr     "${icons[git_staged]}  "
 zstyle ':vcs_info:*' unstagedstr   "${icons[git_unstaged]}  "
 
 setopt prompt_subst
-setopt transient_rprompt
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  local now='%{%F{yellow}%}%D{%R %b %d}%{%f%}'
+  local now='%{%F{yellow}%}%D{%b %d %a %T}%{%f%}'
   local rc="%(?,${icons[ok]} ,${icons[error]} )"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
   local git='$vcs_info_msg_0_'
-  PROMPT="$now $dir $user($host$via) $rc $git"$'\n%# '
+  PROMPT="$dir $user($host$via) $rc $git"$'\n%# '
+  RPROMPT="$now"
 }
 
 
