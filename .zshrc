@@ -52,14 +52,22 @@ zstyle ':completion:*:default' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Prompt
+typeset -A icons
+icons[ok]=$'\U2705'
+icons[error]=$'\U274C'
+icons[git]=$'\U1F500'
+icons[git_action]=$'\U1F527'
+icons[git_staged]=$'\U1F53C'
+icons[git_unstaged]=$'\U1F53D'
+
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats       $'%u%c\U1F500  %{%F{blue}%}%b%{%f%}'
-zstyle ':vcs_info:*' actionformats $'%u%c\U1F500  %{%F{blue}%}%b%{%f%} \U1F527  %{%F{blue}%}%a%{%f%}'
-zstyle ':vcs_info:*' unstagedstr   $'\U1F53D  '
-zstyle ':vcs_info:*' stagedstr     $'\U1F53C  '
+zstyle ':vcs_info:*' formats       "%u%c${icons[git]}  %{%F{blue}%}%b%{%f%}"
+zstyle ':vcs_info:*' actionformats "%u%c${icons[git]}  %{%F{blue}%}%b%{%f%} ${icons[git_action]}  %{%F{blue}%}%a%{%f%}"
+zstyle ':vcs_info:*' stagedstr     "${icons[git_staged]}  "
+zstyle ':vcs_info:*' unstagedstr   "${icons[git_unstaged]}  "
 
 setopt prompt_subst
 setopt transient_rprompt
@@ -67,7 +75,7 @@ setopt transient_rprompt
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%R %b %d}%{%f%}'
-  local rc=$'%(?,\U2705 ,\U274C )'
+  local rc="%(?,${icons[ok]} ,${icons[error]} )"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
