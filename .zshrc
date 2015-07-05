@@ -59,33 +59,33 @@ zstyle ':completion:*:default' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Prompt
-typeset -A icons
-icons[ok]=$'\U2705'
-icons[error]=$'\U274C'
-icons[git]=$'\U1F500'
-icons[git_action]=$'\U1F527'
-icons[git_staged]=$'\U1F53C'
-icons[git_unstaged]=$'\U1F53D'
-icons[right_arrow]=$'\U2794'
+typeset -A emoji
+emoji[ok]=$'\U2705'
+emoji[error]=$'\U274C'
+emoji[git]=$'\U1F500'
+emoji[git_action]=$'\U1F527'
+emoji[git_staged]=$'\U1F53C'
+emoji[git_unstaged]=$'\U1F53D'
+emoji[right_arrow]=$'\U2794'
 
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats       "%u%c${icons[git]}  %{%F{blue}%}%b%{%f%}"
-zstyle ':vcs_info:*' actionformats "%u%c${icons[git]}  %{%F{blue}%}%b%{%f%} ${icons[git_action]}  %{%F{blue}%}%a%{%f%}"
-zstyle ':vcs_info:*' stagedstr     "${icons[git_staged]}  "
-zstyle ':vcs_info:*' unstagedstr   "${icons[git_unstaged]}  "
+zstyle ':vcs_info:*' formats       "%u%c${emoji[git]}  %{%F{blue}%}%b%{%f%}"
+zstyle ':vcs_info:*' actionformats "%u%c${emoji[git]}  %{%F{blue}%}%b%{%f%} ${emoji[git_action]}  %{%F{blue}%}%a%{%f%}"
+zstyle ':vcs_info:*' stagedstr     "${emoji[git_staged]}  "
+zstyle ':vcs_info:*' unstagedstr   "${emoji[git_unstaged]}  "
 
 setopt prompt_subst
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%b %d %a %T}%{%f%}'
-  local rc="%(?,${icons[ok]} ,${icons[error]} )"
+  local rc="%(?,${emoji[ok]} ,${emoji[error]} )"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
-  [ "$SSH_CLIENT" ] && local via="%{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%} ${icons[right_arrow]} "
+  [ "$SSH_CLIENT" ] && local via="%{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%} ${emoji[right_arrow]} "
   local git='$vcs_info_msg_0_'
   PROMPT="$dir $user($via$host) $rc $git"$'\n%# '
   RPROMPT="$now"
