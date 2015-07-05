@@ -38,6 +38,13 @@ HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 
+setopt share_history
+setopt inc_append_history
+
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_reduce_blanks
+
 # Completion
 autoload -U compinit
 compinit -u
