@@ -82,7 +82,7 @@ setopt prompt_subst
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%b %d %a %T}%{%f%}'
-  local rc="%(?,${emoji[ok]} ,${emoji[error]} )"
+  local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="%{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%} ${emoji[right_arrow]} "
