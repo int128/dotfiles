@@ -66,6 +66,7 @@ icons[git]=$'\U1F500'
 icons[git_action]=$'\U1F527'
 icons[git_staged]=$'\U1F53C'
 icons[git_unstaged]=$'\U1F53D'
+icons[right_arrow]=$'\U2794'
 
 autoload vcs_info
 precmd () { vcs_info }
@@ -84,9 +85,9 @@ function {
   local rc="%(?,${icons[ok]} ,${icons[error]} )"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
-  [ "$SSH_CLIENT" ] && local via=" from %{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%}"
+  [ "$SSH_CLIENT" ] && local via="%{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%} ${icons[right_arrow]} "
   local git='$vcs_info_msg_0_'
-  PROMPT="$dir $user($host$via) $rc $git"$'\n%# '
+  PROMPT="$dir $user($via$host) $rc $git"$'\n%# '
   RPROMPT="$now"
 }
 
