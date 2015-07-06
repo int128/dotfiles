@@ -195,6 +195,18 @@ function sudo_term () {
   osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
 }
 
+# OS X Notification
+function display_notification () {
+  osascript -e 'on run argv
+    display notification current date as text with title item 1 of argv
+  end run' -- "$*"
+}
+
+function with_display_notification () {
+  "$@"
+  display_notification "($?)" "$@"
+}
+
 
 #
 # More
