@@ -93,56 +93,6 @@ function {
 
 
 #
-# Aliases and functions
-#
-
-case "$(uname)" in
-  Linux | CYGWIN*)
-    alias ls='ls --color=auto'
-    ;;
-  Darwin)
-    alias ls='ls -G'
-    alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
-    ;;
-esac
-
-alias ll='ls -la'
-
-# tmux: attach or create session
-function t () {
-  tmux has-session 2> /dev/null && tmux attach || tmux
-}
-
-# Enable proxy settings (call in ~/.zshrc.local)
-function enable_proxy () {
-  local port="$1"
-  local host="$2"
-  [ -z "$port" ] && port='9090'
-  [ -z "$host" ] && host='127.0.0.1'
-
-  export http_proxy="http://$host:$port/"
-  export https_proxy="$http_proxy"
-  export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
-}
-
-# Prefix for command without proxy
-function without_proxy() {
-  http_proxy= https_proxy= "$@"
-}
-
-# Enable Docker Machine (call in ~/.zshrc.local)
-function enable_docker_machine () {
-  local machine="$1"
-  eval "$(docker-machine env "$machine")"
-}
-
-# OS X Terminal App with sudo privileges
-function sudo-term () {
-  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
-}
-
-
-#
 # Environment
 #
 
@@ -192,6 +142,56 @@ whence gem >/dev/null && {
   . ~/Library/google-cloud-sdk/completion.zsh.inc
   export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/appengine-java-sdk"
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
+}
+
+
+#
+# Aliases and functions
+#
+
+case "$(uname)" in
+  Linux | CYGWIN*)
+    alias ls='ls --color=auto'
+    ;;
+  Darwin)
+    alias ls='ls -G'
+    alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
+    ;;
+esac
+
+alias ll='ls -la'
+
+# tmux: attach or create session
+function t () {
+  tmux has-session 2> /dev/null && tmux attach || tmux
+}
+
+# Enable proxy settings (call in ~/.zshrc.local)
+function enable_proxy () {
+  local port="$1"
+  local host="$2"
+  [ -z "$port" ] && port='9090'
+  [ -z "$host" ] && host='127.0.0.1'
+
+  export http_proxy="http://$host:$port/"
+  export https_proxy="$http_proxy"
+  export JAVA_OPTS="-Dhttp.proxyHost=$host -Dhttp.proxyPort=$port -Dhttps.proxyHost=$host -Dhttps.proxyPort=$port"
+}
+
+# Prefix for command without proxy
+function without_proxy() {
+  http_proxy= https_proxy= "$@"
+}
+
+# Enable Docker Machine (call in ~/.zshrc.local)
+function enable_docker_machine () {
+  local machine="$1"
+  eval "$(docker-machine env "$machine")"
+}
+
+# OS X Terminal App with sudo privileges
+function sudo-term () {
+  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
 }
 
 
