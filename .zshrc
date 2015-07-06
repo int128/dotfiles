@@ -85,7 +85,7 @@ function {
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
-  [ "$SSH_CLIENT" ] && local via="%{%F{green}%}${${=SSH_CLIENT}[1]}%{%f%} ${emoji[right_arrow]} "
+  [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
   local git='$vcs_info_msg_0_'
   PROMPT="$dir $user($via$host) $rc $git"$'\n%# '
   RPROMPT="$now"
