@@ -179,7 +179,7 @@ function enable_proxy () {
 }
 
 # Prefix for command without proxy
-function without_proxy() {
+function without_proxy () {
   http_proxy= https_proxy= "$@"
 }
 
@@ -191,7 +191,7 @@ function enable_docker_machine () {
 }
 
 # OS X Terminal App with sudo privileges
-function sudo-term () {
+function sudo_term () {
   osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
 }
 
