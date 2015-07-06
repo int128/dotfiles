@@ -183,9 +183,10 @@ function without_proxy() {
   http_proxy= https_proxy= "$@"
 }
 
-# Enable Docker Machine (call in ~/.zshrc.local)
+# Select docker machine
 function enable_docker_machine () {
   local machine="$1"
+  [ -z "$machine" ] && local machine="$(docker-machine ls -q)"
   eval "$(docker-machine env "$machine")"
 }
 
