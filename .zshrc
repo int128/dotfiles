@@ -81,7 +81,7 @@ setopt prompt_subst
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  local now='%{%F{yellow}%}%D{%b %e %a %R}%{%f%}'
+  local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
