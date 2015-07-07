@@ -63,19 +63,19 @@ typeset -A emoji
 emoji[ok]=$'\U2705'
 emoji[error]=$'\U274C'
 emoji[git]=$'\U1F500'
-emoji[git_action]=$'\U1F527'
-emoji[git_staged]=$'\U1F53C'
-emoji[git_unstaged]=$'\U1F53D'
+emoji[git_action]=$'\U1F374'
+emoji[git_staged]=$'\U2728'
+emoji[git_unstaged]=$'\U2728'
 emoji[right_arrow]=$'\U2794'
 
 autoload vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats       "%u%c${emoji[git]}  %{%F{blue}%}%b%{%f%}"
-zstyle ':vcs_info:*' actionformats "%u%c${emoji[git]}  %{%F{blue}%}%b%{%f%} ${emoji[git_action]}  %{%F{blue}%}%a%{%f%}"
-zstyle ':vcs_info:*' stagedstr     "${emoji[git_staged]}  "
-zstyle ':vcs_info:*' unstagedstr   "${emoji[git_unstaged]}  "
+zstyle ':vcs_info:*' formats       "${emoji[git]}  %{%F{blue}%}%b%{%f%} %u%c"
+zstyle ':vcs_info:*' actionformats "${emoji[git]}  %{%F{blue}%}%b%{%f%} %u%c${emoji[git_action]}  %{%F{red}%}%a%{%f%}"
+zstyle ':vcs_info:*' stagedstr     "${emoji[git_staged]}  %{%F{yellow}%}staged%{%f%} "
+zstyle ':vcs_info:*' unstagedstr   "${emoji[git_unstaged]}  %{%F{yellow}%}unstaged%{%f%} "
 
 setopt prompt_subst
 
