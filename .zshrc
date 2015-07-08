@@ -63,31 +63,42 @@ typeset -A emoji
 emoji[ok]=$'\U2705'
 emoji[error]=$'\U274C'
 emoji[git]=$'\U1F500'
-emoji[git_action]=$'\U1F374'
-emoji[git_staged]=$'\U2728'
-emoji[git_unstaged]=$'\U2728'
+emoji[git_changed]=$'\U1F37A'
+emoji[git_untracked]=$'\U1F363'
+emoji[git_clean]=$'\U2728'
 emoji[right_arrow]=$'\U2794'
 
-autoload vcs_info
-precmd () { vcs_info }
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats       "${emoji[git]}  %{%F{blue}%}%b%{%f%} %u%c"
-zstyle ':vcs_info:*' actionformats "${emoji[git]}  %{%F{blue}%}%b%{%f%} %u%c${emoji[git_action]}  %{%F{red}%}%a%{%f%}"
-zstyle ':vcs_info:*' stagedstr     "${emoji[git_staged]}  %{%F{yellow}%}staged%{%f%} "
-zstyle ':vcs_info:*' unstagedstr   "${emoji[git_unstaged]}  %{%F{yellow}%}unstaged%{%f%} "
+precmd () {
+  typeset -A git_info
+  function {
+    local git_status
+    git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
+    (( $? == 0 )) && {
+      git_info[branch]="${${git_status[1]}#\#\# }"
+      (( $#git_status == 1 )) && git_info[clean]=1
+      git_info[unstaged]=${git_status[(I) M*]}
+      git_info[staged]=${git_status[(I) A*]}
+      git_info[untracked]=${git_status[(I)\?*]}
+    }
+  }
 
-setopt prompt_subst
+  local git
+  [ "${git_info[branch]}" ] && {
+    git=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
+    (( ${git_info[clean]}     )) && git=($git "${emoji[git_clean]}")
+    (( ${git_info[unstaged]}  )) && git=($git "${emoji[git_changed]}  %{%F{yellow}%}unstaged%{%f%}")
+    (( ${git_info[staged]}    )) && git=($git "${emoji[git_changed]}  %{%F{yellow}%}staged%{%f%}")
+    (( ${git_info[untracked]} )) && git=($git "${emoji[git_untracked]}  %{%F{red}%}untracked%{%f%}")
+  }
 
-function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
-  local git='$vcs_info_msg_0_'
-  PROMPT="$dir $user($via$host) $rc $git"$'\n%# '
+  local mark=$'\n%# '
+  PROMPT="$dir $user($via$host) $rc $git$mark"
   RPROMPT="$now"
 }
 
