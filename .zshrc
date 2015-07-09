@@ -71,14 +71,14 @@ emoji[right_arrow]=$'\U2794'
 precmd () {
   typeset -A git_info
   function {
-    local git_status
+    local git_status untracked
     git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
     (( $? == 0 )) && {
       git_info[branch]="${${git_status[1]}#\#\# }"
-      (( $#git_status == 1 )) && git_info[clean]=1
-      git_info[unstaged]=${git_status[(I) M*]}
-      git_info[staged]=${git_status[(I) A*]}
-      git_info[untracked]=${git_status[(I)\?*]}
+      shift git_status
+      git_info[changed]=${#git_status:#\?\?*}
+      git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
+      git_info[clean]=$(( $#git_status == 0 ))
     }
   }
 
@@ -86,9 +86,8 @@ precmd () {
   [ "${git_info[branch]}" ] && {
     git=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
     (( ${git_info[clean]}     )) && git=($git "${emoji[git_clean]}")
-    (( ${git_info[unstaged]}  )) && git=($git "${emoji[git_changed]}  %{%F{yellow}%}unstaged%{%f%}")
-    (( ${git_info[staged]}    )) && git=($git "${emoji[git_changed]}  %{%F{yellow}%}staged%{%f%}")
-    (( ${git_info[untracked]} )) && git=($git "${emoji[git_untracked]}  %{%F{red}%}untracked%{%f%}")
+    (( ${git_info[changed]}   )) && git=($git "${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
+    (( ${git_info[untracked]} )) && git=($git "${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
   }
 
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
