@@ -59,6 +59,9 @@ zstyle ':completion:*:default' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Prompt
+setopt prompt_subst
+autoload -Uz add-zsh-hook
+
 typeset -A emoji
 emoji[ok]=$'\U2705'
 emoji[error]=$'\U274C'
@@ -68,34 +71,37 @@ emoji[git_untracked]=$'\U1F363'
 emoji[git_clean]=$'\U2728'
 emoji[right_arrow]=$'\U2794'
 
-precmd () {
+function vcs_git_indicator () {
   typeset -A git_info
-  typeset -a git_indicator
-  function {
-    local git_status untracked
-    git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
-    (( $? == 0 )) && {
-      git_info[branch]="${${git_status[1]}#\#\# }"
-      shift git_status
-      git_info[changed]=${#git_status:#\?\?*}
-      git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
-      git_info[clean]=$(( $#git_status == 0 ))
+  local git_indicator git_status untracked
+  git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
+  (( $? == 0 )) && {
+    git_info[branch]="${${git_status[1]}#\#\# }"
+    shift git_status
+    git_info[changed]=${#git_status:#\?\?*}
+    git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
+    git_info[clean]=$(( $#git_status == 0 ))
 
-      git_indicator=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
-      (( ${git_info[clean]}     )) && git_indicator+=("${emoji[git_clean]}")
-      (( ${git_info[changed]}   )) && git_indicator+=("${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
-      (( ${git_info[untracked]} )) && git_indicator+=("${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
-    }
+    git_indicator=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
+    (( ${git_info[clean]}     )) && git_indicator+=("${emoji[git_clean]}")
+    (( ${git_info[changed]}   )) && git_indicator+=("${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
+    (( ${git_info[untracked]} )) && git_indicator+=("${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
   }
+  _vcs_git_indicator="${git_indicator}"
+}
 
+add-zsh-hook precmd vcs_git_indicator
+
+function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
+  local git='$_vcs_git_indicator'
   local mark=$'\n%# '
-  PROMPT="$dir $user($via$host) $rc $git_indicator$mark"
+  PROMPT="$dir $user($via$host) $rc $git$mark"
   RPROMPT="$now"
 }
 
