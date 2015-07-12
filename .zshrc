@@ -72,7 +72,7 @@ emoji[git_untracked]=$'\U1F363'
 emoji[git_clean]=$'\U2728'
 emoji[right_arrow]=$'\U2794'
 
-function vcs_git_indicator () {
+function _vcs_git_indicator () {
   typeset -A git_info
   local git_indicator git_status
   git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
@@ -91,7 +91,13 @@ function vcs_git_indicator () {
   _vcs_git_indicator="${git_indicator}"
 }
 
-add-zsh-hook precmd vcs_git_indicator
+function _depth_and_contents_of_pwd () {
+  echo -n "${(r:${#${(s./.)PWD}}::>:)} "
+  $(whence ls) -m
+}
+
+add-zsh-hook precmd _vcs_git_indicator
+add-zsh-hook chpwd _depth_and_contents_of_pwd
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
