@@ -175,7 +175,7 @@ case "$(uname)" in
     ;;
 esac
 
-alias ll='ls -la'
+alias ll='ls -lah'
 
 # tmux: attach or create session
 function t () {
