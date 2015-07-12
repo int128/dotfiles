@@ -31,6 +31,18 @@ enable_proxy
 ```
 
 
+### Bootstrap
+
+```zsh
+git clone https://github.com/Homebrew/homebrew.git .homebrew
+exec zsh -l
+brew doctor
+
+brew install caskroom/cask/brew-cask
+brew cask doctor
+```
+
+
 Install on Cygwin
 -----------------
 
