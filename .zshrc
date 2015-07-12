@@ -4,6 +4,8 @@
 # General settings
 #
 
+autoload -Uz add-zsh-hook
+
 # Key bindings
 bindkey -e
 
@@ -52,15 +54,14 @@ compinit -u
 setopt magic_equal_subst
 
 zstyle ':completion:*:default' menu select
-
-[ -z "$LS_COLORS" ] && {
-  LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:'
-}
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+if [ "$LS_COLORS" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+else
+  zstyle ':completion:*' list-colors di=34 ln=35 ex=31
+fi
 
 # Prompt
 setopt prompt_subst
-autoload -Uz add-zsh-hook
 
 typeset -A emoji
 emoji[ok]=$'\U2705'
@@ -73,7 +74,7 @@ emoji[right_arrow]=$'\U2794'
 
 function vcs_git_indicator () {
   typeset -A git_info
-  local git_indicator git_status untracked
+  local git_indicator git_status
   git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
   (( $? == 0 )) && {
     git_info[branch]="${${git_status[1]}#\#\# }"
