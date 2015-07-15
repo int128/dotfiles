@@ -30,12 +30,6 @@ Install additional packages.
 cygwin/install.sh
 ```
 
-Install VIM NeoBundle.
-
-```zsh
-.vim/install.sh
-```
-
 ### Environment specific
 
 Put environment specific configurations into `.zshrc.local`:

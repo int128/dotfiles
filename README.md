@@ -14,12 +14,6 @@ git clone https://github.com/int128/dotfiles.git
 dotfiles/install.sh
 ```
 
-Install VIM NeoBundle.
-
-```zsh
-.vim/install.sh
-```
-
 
 ### Environment specific
 

@@ -13,3 +13,7 @@ chmod -v 700 "$HOME/dotfiles/.vim/tmp"
 git config --global include.path "$HOME/dotfiles/.gitconfig"
 git config --global core.autocrlf input
 
+# VIM
+git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
+vim +NeoBundleInstall +qall
+
