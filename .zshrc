@@ -107,8 +107,9 @@ function {
   local host='%{%F{green}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
   local git='$_vcs_git_indicator'
+  [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
-  PROMPT="$dir $user($via$host) $rc $git$mark"
+  PROMPT="$dir $user($via$host) $rc $git$terminal$mark"
   RPROMPT="$now"
 }
 
