@@ -9,7 +9,7 @@
   co = checkout
   ls = log --graph --decorate --oneline
   ll = log --stat --decorate --oneline --find-renames
-  st = status --short --branch
-  pushoriginmaster = push origin master
-  fetchorigin = fetch origin
+  s = status --short --branch
+  pom = push origin master
+  fo = fetch origin
 
