@@ -7,9 +7,9 @@
 [alias]
   ci = commit
   co = checkout
-  ls = log --stat --decorate --find-renames
+  ls = log --graph --decorate --oneline
+  ll = log --stat --decorate --oneline --find-renames
   st = status --short --branch
-  graph = log --graph --decorate --oneline
   pushoriginmaster = push origin master
   fetchorigin = fetch origin
 
