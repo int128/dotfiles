@@ -22,15 +22,10 @@ Environment specific configuration goes to `.zshrc.local`.
 enable_proxy
 ```
 
-### Bootstrap
+### OSX specific
 
 ```zsh
-git clone https://github.com/Homebrew/homebrew.git .homebrew
-exec zsh -l
-brew doctor
-
-brew install caskroom/cask/brew-cask
-brew cask doctor
+dotfiles/osx/install.sh
 ```
 
 Install on Cygwin
