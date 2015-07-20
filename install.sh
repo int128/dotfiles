@@ -1,4 +1,4 @@
-#!/bin/zsh -xe
+#!/bin/sh -xe
 
 # Install dotfiles
 ln -snfv dotfiles/.zshrc "$HOME/.zshrc"
@@ -12,9 +12,8 @@ mkdir -v -m 700 "$HOME/.vim/tmp"
 mkdir -v -m 700 "$HOME/.vim/bundle"
 
 # Git
-git_author=("${(f)$(git log -1 --format=format:%an%n%ae)}")
-git config --global user.name  "${git_author[1]}"
-git config --global user.email "${git_author[2]}"
+git config --global user.name "`git log -1 --format=format:%an`"
+git config --global user.email "`git log -1 --format=format:%ae`"
 git config --global include.path "$HOME/dotfiles/.gitconfig"
 git config --global core.autocrlf input
 
