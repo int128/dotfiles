@@ -4,11 +4,12 @@
 ln -snfv dotfiles/.zshrc "$HOME/.zshrc"
 ln -snfv dotfiles/.vimrc "$HOME/.vimrc"
 ln -snfv dotfiles/.gvimrc "$HOME/.gvimrc"
-ln -snfv dotfiles/.vim "$HOME/.vim"
 ln -snfv dotfiles/.gemrc "$HOME/.gemrc"
 
-# Fix permission for security
-chmod -v 700 "$HOME/dotfiles/.vim/tmp"
+# Create dotvim
+mkdir -v -m 700 "$HOME/.vim"
+mkdir -v -m 700 "$HOME/.vim/tmp"
+mkdir -v -m 700 "$HOME/.vim/bundle"
 
 # Git
 git_author=("${(f)$(git log -1 --format=format:%an%n%ae)}")

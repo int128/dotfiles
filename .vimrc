@@ -2,11 +2,7 @@
 scriptencoding utf-8
 set encoding=utf-8
 
-if has('win32') || has('win64')
-  let $dotvim=expand('~/dotfiles/.vim')
-else
-  let $dotvim=expand('~/.vim')
-endif
+let $dotvim=expand('~/.vim')
 
 set backup
 set backupdir=$dotvim/tmp/
