@@ -163,7 +163,7 @@ whence gem >/dev/null && {
 [ -d ~/Library/google-cloud-sdk ] && {
   . ~/Library/google-cloud-sdk/path.zsh.inc
   . ~/Library/google-cloud-sdk/completion.zsh.inc
-  export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/appengine-java-sdk"
+  export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java"
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 }
 
