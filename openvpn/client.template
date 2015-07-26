@@ -1,0 +1,16 @@
+# X.509 Certificate options
+
+# DN options
+
+organization = "Organization"
+state = "Tokyo"
+country = JP
+cn = "client"
+
+expiration_days = 365
+
+# X.509 v3 extensions
+
+tls_www_client
+signing_key
+
