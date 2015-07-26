@@ -230,6 +230,39 @@ function with_display_notification () {
   display_notification "($?)" "$@"
 }
 
+# PKI certificate (requires GNU certtool)
+function certtool_generate_key () {
+  local key_file="$1"
+  certtool -p --bits 4096 --outfile "$key_file"
+}
+
+function certtool_generate_csr () {
+  local key_file="$1"
+  local template_file="$2"
+  local csr_file="$3"
+  certtool -q --hash SHA512 --load-privkey "$key_file" --template "$template_file" --outfile "$csr_file"
+}
+
+function certtool_sign_crt () {
+  local ca_key="$1"
+  local ca_crt="$2"
+  local csr_file="$3"
+  local crt_file="$4"
+  certtool -c --hash SHA512 --load-ca-privkey "$ca_key" --load-ca-certificate "$ca_crt" --load-request "$csr_file" --outfile "$crt_file"
+}
+
+function certtool_generate_self_crt () {
+  local key_file="$1"
+  local template_file="$2"
+  local crt_file="$3"
+  certtool -s --hash SHA512 --load-privkey "$key_file" --template "$template_file" --outfile "$crt_file"
+}
+
+function certtool_generate_dh_patams () {
+  local dh_file="$1"
+  certtool --generate-dh-params --bits 4096 --outfile "$dh_file"
+}
+
 
 #
 # More
