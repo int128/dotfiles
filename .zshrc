@@ -230,6 +230,19 @@ function with_display_notification () {
   display_notification "($?)" "$@"
 }
 
+# Random string generator
+function random_alphanum () {
+  local length="$1"
+  local count="$2"
+  LANG=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
+}
+
+function random_alphanumsym () {
+  local length="$1"
+  local count="$2"
+  LANG=C tr -dc 'a-zA-Z0-9!#$%&()@/' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
+}
+
 # PKI certificate (requires GNU certtool)
 function certtool_generate_key () {
   local key_file="$1"
