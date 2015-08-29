@@ -22,7 +22,6 @@ NeoBundle 'https://github.com/itchyny/lightline.vim'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
 
 NeoBundle 'https://github.com/kchmck/vim-coffee-script'
-NeoBundle 'https://github.com/dagwieers/asciidoc-vim'
 
 call neobundle#end()
 filetype plugin indent on
