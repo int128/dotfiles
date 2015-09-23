@@ -1,6 +1,8 @@
 " .gvimrc
 
-colorscheme evening
+set background=light
+colorscheme solarized
+
 set columns=120
 set lines=40
 set cmdheight=1

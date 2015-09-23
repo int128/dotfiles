@@ -19,6 +19,7 @@ NeoBundle 'https://github.com/Shougo/neobundle.vim'
 NeoBundle 'https://github.com/scrooloose/nerdtree'
 NeoBundle 'https://github.com/tpope/vim-surround'
 NeoBundle 'https://github.com/itchyny/lightline.vim'
+NeoBundle 'https://github.com/altercation/vim-colors-solarized'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
 
 NeoBundle 'https://github.com/kchmck/vim-coffee-script'
@@ -28,9 +29,9 @@ filetype plugin indent on
 
 " Appearance
 set t_Co=256
-autocmd ColorScheme * highlight LineNr ctermfg=8 guifg=#888888
-colorscheme slate
 syntax on
+set background=light
+colorscheme solarized
 
 set number
 set cursorline
