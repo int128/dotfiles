@@ -167,8 +167,8 @@ whence gem >/dev/null && {
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 }
 
-# GVM
-[[ -s ~/.gvm/bin/gvm-init.sh ]] && . ~/.gvm/bin/gvm-init.sh
+# sdkman/GVM
+[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && . ~/.sdkman/bin/sdkman-init.sh
 
 
 #
