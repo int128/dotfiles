@@ -16,5 +16,5 @@ Install on App Store.
 Install manually.
 
 * [ATOK Passport](https://www.justmyshop.com/camp/atok_passport/dl/)
-* [iterm2-colors-solarized](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized) (installed to Desktop)
+* [iterm2-colors-solarized](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized) (placed to Desktop by `install.sh`)
 

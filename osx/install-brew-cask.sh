@@ -1,5 +1,9 @@
 #!/bin/sh -xe
 
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
+brew cask doctor
+
 brew cask update
 
 brew cask install google-chrome
