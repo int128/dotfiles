@@ -10,6 +10,7 @@ brew cask install google-chrome
 brew cask install mplayerx
 brew cask install picasa
 brew cask install evernote
+brew cask install slack
 
 brew cask install iterm2
 brew cask install atom
