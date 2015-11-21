@@ -3,7 +3,6 @@ cd
 tar -cvf configuration.tar \
  .ssh \
  .gnupg \
- .docker \
  .viminfo \
  .zhistory \
  .ApacheDirectoryStudio \

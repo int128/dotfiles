@@ -19,6 +19,7 @@ brew cask install macvim-kaoriya
 
 brew cask install tunnelblick
 brew cask install virtualbox
+brew cask install dockertoolbox
 
 brew cask install java7
 brew cask install intellij-idea
