@@ -181,7 +181,6 @@ case "$(uname)" in
     ;;
   Darwin)
     alias ls='ls -G'
-    alias mvim=/Applications/MacVim.app/Contents/MacOS/mvim
     ;;
 esac
 
