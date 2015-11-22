@@ -1,5 +1,5 @@
-OSX specific
-============
+Install on OSX
+==============
 
 Install homebrew and cask.
 
