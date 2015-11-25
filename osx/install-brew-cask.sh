@@ -25,3 +25,5 @@ brew cask install java7
 brew cask install intellij-idea
 brew cask install android-studio
 
+brew cask install apache-directory-studio
+
