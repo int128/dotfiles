@@ -170,6 +170,10 @@ whence gem >/dev/null && {
 # sdkman/GVM
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && . ~/.sdkman/bin/sdkman-init.sh
 
+# Golang
+[ -d ~/repo/go ] && export GOPATH=~/repo/go
+[ -d /usr/local/go/bin ] && export PATH="/usr/local/go/bin:$PATH"
+
 
 #
 # Aliases and functions
