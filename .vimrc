@@ -23,6 +23,7 @@ NeoBundle 'https://github.com/altercation/vim-colors-solarized'
 NeoBundle 'https://github.com/airblade/vim-gitgutter'
 
 NeoBundle 'https://github.com/kchmck/vim-coffee-script'
+NeoBundle 'fatih/vim-go'
 
 call neobundle#end()
 filetype plugin indent on
