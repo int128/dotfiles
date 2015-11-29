@@ -15,14 +15,14 @@ set undodir=$dotvim/tmp/
 set runtimepath+=$dotvim/bundle/neobundle.vim/
 call neobundle#begin($dotvim . '/bundle/')
 
-NeoBundle 'https://github.com/Shougo/neobundle.vim'
-NeoBundle 'https://github.com/scrooloose/nerdtree'
-NeoBundle 'https://github.com/tpope/vim-surround'
-NeoBundle 'https://github.com/itchyny/lightline.vim'
-NeoBundle 'https://github.com/altercation/vim-colors-solarized'
-NeoBundle 'https://github.com/airblade/vim-gitgutter'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'airblade/vim-gitgutter'
 
-NeoBundle 'https://github.com/kchmck/vim-coffee-script'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'fatih/vim-go'
 
 call neobundle#end()
