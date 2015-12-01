@@ -9,6 +9,8 @@ brew cask update
 brew cask install google-chrome
 brew cask install mplayerx
 brew cask install picasa
+brew cask install gimp
+
 brew cask install evernote
 brew cask install slack
 
