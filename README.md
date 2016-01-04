@@ -1,4 +1,4 @@
-dotfiles
+dotfiles [![Build Status](https://travis-ci.org/int128/dotfiles.svg?branch=master)](https://travis-ci.org/int128/dotfiles)
 ========
 
 Dot files of my environment.
