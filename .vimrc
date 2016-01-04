@@ -32,7 +32,11 @@ filetype plugin indent on
 set t_Co=256
 syntax on
 set background=light
-colorscheme solarized
+try
+  colorscheme solarized
+catch
+  " Prevent error if colorscheme is not installed yet
+endtry
 
 set number
 set cursorline
