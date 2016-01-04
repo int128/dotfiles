@@ -160,10 +160,11 @@ whence gem >/dev/null && {
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Google Cloud Platform
-[ -d ~/Library/google-cloud-sdk ] && {
-  . ~/Library/google-cloud-sdk/path.zsh.inc
-  . ~/Library/google-cloud-sdk/completion.zsh.inc
-  export APPENGINE_SDK_HOME="$HOME/Library/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java"
+[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest ] && {
+  local cloud_base="$HOME/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+  . "$cloud_base/path.zsh.inc"
+  . "$cloud_base/completion.zsh.inc"
+  export APPENGINE_SDK_HOME="$cloud_base/platform/google_appengine/google/appengine/tools/java"
   export APPENGINE_HOME="$APPENGINE_SDK_HOME"
 }
 
