@@ -22,5 +22,5 @@ mkdir -p -v -m 700 "$HOME/.vim/bundle"
 
 # VIM
 git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
-vim +NeoBundleInstall +qall
+"$HOME/.vim/bundle/neobundle.vim/bin/neoinstall"
 
