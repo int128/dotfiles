@@ -283,6 +283,15 @@ function certtool_generate_dh_patams () {
   certtool --generate-dh-params --bits 4096 --outfile "$dh_file"
 }
 
+# VirtualBox
+function virtualbox_list_vms () {
+  VBoxManage list vms "$@"
+}
+
+function virtualbox_start_vm () {
+  VBoxManage startvm "$@"
+}
+
 
 #
 # More
