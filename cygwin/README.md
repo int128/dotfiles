@@ -26,3 +26,7 @@ Install packages.
 * [MeiryoKe font family](http://web1.nazca.co.jp/hp/nzkchicagob/m6x9801/mrktb4br6.html)
 * [Menlo font](https://github.com/hbin/top-programming-fonts)
 
+```sh
+git config --global credential.helper "$HOME/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
+```
+

@@ -13,10 +13,6 @@ ln -snfv "$dotfiles_cygwin_relative_from_home/.minttyrc" "$HOME/.minttyrc"
 cp -av "$dotfiles_cygwin_relative_from_home/_vimrc" "$HOME/_vimrc"
 cp -av "$dotfiles_cygwin_relative_from_home/_gvimrc" "$HOME/_gvimrc"
 
-# git-credential-winstore
-test -f "$HOME/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
-git config --global credential.helper "$HOME/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
-
 # apt-cyg
 wget -O /usr/local/bin/apt-cyg https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
 chmod +x /usr/local/bin/apt-cyg 
