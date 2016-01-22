@@ -1,4 +1,7 @@
-#!/bin/sh -xe
+#!/bin/bash -xe
+
+dotfiles_cygwin_base="$(cd $(dirname "$0") && pwd)"
+dotfiles_cygwin_relative_from_home="${dotfiles_cygwin_base/$HOME\/}"
 
 test "`uname -o`" = "Cygwin"
 
@@ -6,9 +9,9 @@ test "`uname -o`" = "Cygwin"
 test -f "$HOME/ntuser.dat"
 
 # Install dotfiles
-ln -snfv dotfiles/cygwin/.minttyrc "$HOME/.minttyrc"
-cp -av dotfiles/cygwin/_vimrc "$HOME/_vimrc"
-cp -av dotfiles/cygwin/_gvimrc "$HOME/_gvimrc"
+ln -snfv "$dotfiles_cygwin_relative_from_home/.minttyrc" "$HOME/.minttyrc"
+cp -av "$dotfiles_cygwin_relative_from_home/_vimrc" "$HOME/_vimrc"
+cp -av "$dotfiles_cygwin_relative_from_home/_gvimrc" "$HOME/_gvimrc"
 
 # git-credential-winstore
 test -f "$HOME/AppData/Roaming/GitCredStore/git-credential-winstore.exe"
