@@ -18,5 +18,5 @@ wget -O /usr/local/bin/apt-cyg https://raw.githubusercontent.com/transcode-open/
 chmod +x /usr/local/bin/apt-cyg 
 apt-cyg --version
 
-apt-cyg install unzip openssh
+apt-cyg install unzip openssh vim
 

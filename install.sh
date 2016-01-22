@@ -16,9 +16,10 @@ ln -snfv "$dotfiles_relative_from_home/.gvimrc" "$HOME/.gvimrc"
 ln -snfv "$dotfiles_relative_from_home/.gemrc" "$HOME/.gemrc"
 
 # Create dotvim
-mkdir -p -v -m 700 "$HOME/.vim"
-mkdir -p -v -m 700 "$HOME/.vim/tmp"
-mkdir -p -v -m 700 "$HOME/.vim/bundle"
+mkdir -p -v "$HOME/.vim"
+mkdir -p -v "$HOME/.vim/tmp"
+mkdir -p -v "$HOME/.vim/bundle"
+chmod 700 "$HOME/.vim" || true
 
 # VIM
 git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
