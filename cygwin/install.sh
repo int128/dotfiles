@@ -2,6 +2,9 @@
 
 test "`uname -o`" = "Cygwin"
 
+# Check if home directory is remapped
+test -f "$HOME/ntuser.dat"
+
 # Install dotfiles
 ln -snfv dotfiles/cygwin/.minttyrc "$HOME/.minttyrc"
 cp -av dotfiles/cygwin/_vimrc "$HOME/_vimrc"
