@@ -20,3 +20,7 @@ apt-cyg --version
 
 apt-cyg install unzip openssh vim zsh
 
+# Generate passwd to change the login shell
+mkpasswd -l -c > /etc/passwd
+sed -i -e "/^$(whoami):/s,/bin/bash,/bin/zsh," /etc/passwd
+
