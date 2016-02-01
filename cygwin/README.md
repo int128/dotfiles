@@ -1,10 +1,7 @@
 Install on Cygwin
 -----------------
 
-Install [Cygwin](https://www.cygwin.com) with following packages.
-
-* git
-* wget
+Install [Cygwin](https://www.cygwin.com) with default packages, git and aria2.
 
 Remap the home directory.
 

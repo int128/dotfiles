@@ -14,11 +14,11 @@ cp -av "$dotfiles_cygwin_base/_vimrc" "$HOME/_vimrc"
 cp -av "$dotfiles_cygwin_base/_gvimrc" "$HOME/_gvimrc"
 
 # apt-cyg
-wget -O /usr/local/bin/apt-cyg https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
-chmod +x /usr/local/bin/apt-cyg 
-apt-cyg --version
-
-apt-cyg install unzip openssh vim zsh
+curl -L -o /usr/local/bin/cyg-fast https://raw.githubusercontent.com/tmshn/cyg-fast/master/cyg-fast
+chmod +x /usr/local/bin/cyg-fast
+echo 'http://ftp.iij.ad.jp/pub/cygwin' > /etc/setup/last-mirror
+cyg-fast --version
+cyg-fast install unzip openssh vim zsh curl
 
 # Generate passwd to change the login shell
 mkpasswd -l -c > /etc/passwd
