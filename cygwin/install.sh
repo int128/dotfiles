@@ -14,7 +14,7 @@ cp -av "$dotfiles_cygwin_base/_vimrc" "$HOME/_vimrc"
 cp -av "$dotfiles_cygwin_base/_gvimrc" "$HOME/_gvimrc"
 
 # apt-cyg
-curl -L -o /usr/local/bin/cyg-fast https://raw.githubusercontent.com/tmshn/cyg-fast/master/cyg-fast
+aria2c -d /usr/local/bin https://raw.githubusercontent.com/tmshn/cyg-fast/master/cyg-fast
 chmod +x /usr/local/bin/cyg-fast
 echo 'http://ftp.iij.ad.jp/pub/cygwin' > /etc/setup/last-mirror
 cyg-fast --version
