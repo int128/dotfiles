@@ -10,8 +10,8 @@ test -f "$HOME/ntuser.dat"
 
 # Install dotfiles
 ln -snfv "$dotfiles_cygwin_relative_from_home/.minttyrc" "$HOME/.minttyrc"
-cp -av "$dotfiles_cygwin_relative_from_home/_vimrc" "$HOME/_vimrc"
-cp -av "$dotfiles_cygwin_relative_from_home/_gvimrc" "$HOME/_gvimrc"
+cp -av "$dotfiles_cygwin_base/_vimrc" "$HOME/_vimrc"
+cp -av "$dotfiles_cygwin_base/_gvimrc" "$HOME/_gvimrc"
 
 # apt-cyg
 wget -O /usr/local/bin/apt-cyg https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
