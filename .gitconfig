@@ -11,5 +11,6 @@
   ll = log --stat --decorate --oneline --find-renames
   s = status --short --branch
   pom = push origin master
+  rom = rebase origin/master
   fo = fetch origin
 
