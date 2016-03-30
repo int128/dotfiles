@@ -280,6 +280,11 @@ function virtualbox_start_vm () {
   VBoxManage startvm "$@"
 }
 
+function gradle_dependency () {
+  local module="$1"
+  find ~/.gradle/caches -name "${module}*.jar" ! -name '*-sources.jar' -type f
+}
+
 
 #
 # More
