@@ -120,6 +120,11 @@ function {
 
 export EDITOR=vim
 
+# Per-user bin
+[ -d ~/bin ] && {
+  export PATH="$PATH:$HOME/bin"
+}
+
 # Homebrew
 [ -x ~/.homebrew/bin/brew ] && {
   export PATH="$HOME/.homebrew/bin:$PATH"

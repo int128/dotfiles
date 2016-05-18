@@ -24,11 +24,6 @@ cyg-fast install unzip openssh vim zsh curl
 mkpasswd -l -c > /etc/passwd
 sed -i -e "/^$(whoami):/s,/bin/bash,/bin/zsh," /etc/passwd
 
-# Install git credential manager
-gcm_base="/usr/local/gcm"
-mkdir -p "$gcm_base"
-curl -L -o "$gcm_base/gcm.zip" "https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/download/v1.0.0/gcm-v1.0.0.zip"
-unzip -d "$gcm_base" "$gcm_base/gcm.zip"
-chmod +x "$gcm_base/git-credential-manager.exe"
-git config --global credential.helper "$gcm_base/git-credential-manager.exe"
+# Enable git credential manager
+git config --global credential.helper manager
 
