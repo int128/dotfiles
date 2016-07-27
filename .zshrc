@@ -152,15 +152,6 @@ whence gem >/dev/null && {
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
-# Google Cloud Platform
-[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest ] && {
-  local cloud_base="$HOME/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk"
-  . "$cloud_base/path.zsh.inc"
-  . "$cloud_base/completion.zsh.inc"
-  export APPENGINE_SDK_HOME="$cloud_base/platform/google_appengine/google/appengine/tools/java"
-  export APPENGINE_HOME="$APPENGINE_SDK_HOME"
-}
-
 # sdkman/GVM
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && . ~/.sdkman/bin/sdkman-init.sh
 
