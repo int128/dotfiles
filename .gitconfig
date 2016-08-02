@@ -15,4 +15,5 @@
   rom = rebase origin/master
   fo = fetch origin
   fom = "!git com && git fo && git rom"
+  rpo = remote prune origin
 
