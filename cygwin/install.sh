@@ -18,7 +18,7 @@ aria2c -d /usr/local/bin https://raw.githubusercontent.com/tmshn/cyg-fast/master
 chmod +x /usr/local/bin/cyg-fast
 echo 'http://ftp.iij.ad.jp/pub/cygwin' > /etc/setup/last-mirror
 cyg-fast --version
-cyg-fast install unzip openssh vim zsh curl
+cyg-fast install -y unzip openssh vim zsh curl
 
 # Generate passwd to change the login shell
 mkpasswd -l -c > /etc/passwd
