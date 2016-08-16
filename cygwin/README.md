@@ -20,6 +20,6 @@ dotfiles/install.sh
 Install additional packages.
 
 * [Git Credential Manager](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [MeiryoKe font family](http://web1.nazca.co.jp/hp/nzkchicagob/m6x9801/mrktb4br6.html)
+* [MeiryoKe font family](http://www.geocities.jp/meir000/meiryoKe/index.html)
 * [Menlo](https://github.com/hbin/top-programming-fonts)
 
