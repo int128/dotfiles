@@ -16,8 +16,7 @@ dotfiles/install.sh
 Environment specific configuration goes to `.zshrc.local`.
 
 ```zsh
-# Enable proxy
-enable_proxy
+echo enable_proxy >> .zshrc.local
 ```
 
 See also OS specific installations:
