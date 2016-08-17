@@ -23,3 +23,8 @@ Install additional packages.
 * [MeiryoKe font family](http://www.geocities.jp/meir000/meiryoKe/index.html)
 * [Menlo](https://github.com/hbin/top-programming-fonts)
 
+Apply additional configuration:
+
+```sh
+git config --global credential.github.com.httpProxy http://localhost:9090
+```
