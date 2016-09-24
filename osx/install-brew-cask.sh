@@ -1,8 +1,7 @@
 #!/bin/sh -xe
 
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
-brew cask doctor
 
 brew cask update
 
@@ -21,7 +20,7 @@ brew cask install macvim-kaoriya
 
 brew cask install tunnelblick
 brew cask install virtualbox
-brew cask install dockertoolbox
+brew cask install docker
 
 brew cask install java
 brew cask install intellij-idea
