@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  sshd:
+    build: .
+    ports:
+      - "22:22"
+    environment:
+      USER_AUTHORIZED_KEY: FIXME
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/mnt/dotfiles
+    cap_add:
+      # CIFS mount on Docker for Windows
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+
