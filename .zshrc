@@ -113,6 +113,25 @@ function {
   RPROMPT="$now"
 }
 
+function _window_title_cmd () {
+  local pwd="${PWD/~HOME/~}"
+  print -n "\e]0;"
+  print -n "${pwd##*/} (${HOST%%.*})"
+  print -n "\a"
+}
+
+function _window_title_exec () {
+  local pwd="${PWD/~HOME/~}"
+  print -n "\e]0;"
+  print -n "${1%% *}:${pwd##*/} (${HOST%%.*})"
+  print -n "\a"
+}
+
+[[ "$TERM" =~ "^xterm" ]] && {
+  add-zsh-hook precmd _window_title_cmd
+  add-zsh-hook preexec _window_title_exec
+}
+
 
 #
 # Environment
