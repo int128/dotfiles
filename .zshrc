@@ -1,6 +1,15 @@
 # .zshrc
 
 #
+# Bootstrap configuration
+#
+
+[ -z "$LANG" ] && {
+  export LANG="en_US.UTF-8"
+  export LC_ALL="$LANG"
+}
+
+#
 # General settings
 #
 
@@ -184,7 +193,7 @@ whence gem >/dev/null && {
 #
 
 case "$(uname)" in
-  Linux | CYGWIN*)
+  Linux | CYGWIN* | MINGW*)
     alias ls='ls --color=auto'
     ;;
   Darwin)

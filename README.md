@@ -23,6 +23,7 @@ See also OS specific installations:
 
 * [OS X](osx)
 * [Cygwin](cygwin)
+* [MSYS2](msys2)
 
 Sandbox
 -------
