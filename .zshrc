@@ -160,12 +160,6 @@ export EDITOR=vim
   export HOMEBREW_CASK_OPTS="--caskroom=$HOME/.homebrew/caskroom --binarydir=$HOME/.homebrew/bin"
 }
 
-# Travis CI
-[ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
-
-# Node.js
-[ -f ~/.nvm/nvm.sh ] && . ~/.nvm/nvm.sh
-
 # Ruby
 [ -x ~/.rbenv/bin/rbenv ] && {
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -179,9 +173,6 @@ whence gem >/dev/null && {
 
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
-
-# sdkman/GVM
-[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && . ~/.sdkman/bin/sdkman-init.sh
 
 # Golang
 [ -d ~/repo/go ] && export GOPATH=~/repo/go
@@ -223,13 +214,6 @@ function enable_proxy () {
 # Prefix for command without proxy
 function without_proxy () {
   http_proxy= https_proxy= "$@"
-}
-
-# Select docker machine
-function enable_docker_machine () {
-  local machine="$1"
-  [ -z "$machine" ] && local machine="$(docker-machine ls -q)"
-  eval "$(docker-machine env "$machine")"
 }
 
 # OS X Terminal App with sudo privileges
