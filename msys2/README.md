@@ -12,6 +12,8 @@ echo 'C:/Users /home ntfs override,noacl,binary,auto 0 0' >> /etc/fstab
 Clone the repository and run the installation script.
 
 ```sh
+pacman -Su
+pacman -S git
 git clone https://github.com/int128/dotfiles.git
 dotfiles/msys2/install.sh
 dotfiles/install.sh
