@@ -4,6 +4,8 @@
 # Bootstrap configuration
 #
 
+umask 022
+
 [ -z "$LANG" ] && {
   export LANG="en_US.UTF-8"
   export LC_ALL="$LANG"
@@ -19,29 +21,24 @@ autoload -Uz add-zsh-hook
 bindkey -e
 
 # ctrl+arrow
-# - iterm
+# on iterm
+# on WSL on ConEmu
 bindkey '^[[1;5A' history-beginning-search-backward
 bindkey '^[[1;5B' history-beginning-search-forward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
-# - iterm-linux-tmux
-bindkey '^[OA' history-beginning-search-backward
-bindkey '^[OB' history-beginning-search-forward
-bindkey '^[OD' backward-word
-bindkey '^[OC' forward-word
 
 # alt+arrow
-# - iterm
-# - iterm-linux-tmux
+# on iterm
 #bindkey '^[^[[A'
 #bindkey '^[^[[B'
 bindkey '^[^[[D' beginning-of-line
 bindkey '^[^[[C' end-of-line
-
-# pageup, pagedown
-# - putty
-bindkey "^[[5~" history-beginning-search-backward
-bindkey "^[[6~" history-beginning-search-forward
+# on WSL/ConEmu
+#bindkey '^[[1;3A' 
+#bindkey '^[[1;3B' 
+bindkey '^[[1;3D' beginning-of-line
+bindkey '^[[1;3C' end-of-line
 
 
 # History
