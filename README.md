@@ -22,6 +22,7 @@ echo enable_proxy >> .zshrc.local
 See also OS specific installations:
 
 * [OS X](osx)
+* [Windows Subsystem for Linux (WSL)](wsl)
 * [Cygwin](cygwin)
 * [MSYS2](msys2)
 
