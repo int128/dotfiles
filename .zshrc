@@ -97,13 +97,7 @@ function _vcs_git_indicator () {
   _vcs_git_indicator="${git_indicator}"
 }
 
-function _depth_and_contents_of_pwd () {
-  echo -n "${(r:${#${(s./.)PWD}}::>:)} "
-  $(whence ls) -m
-}
-
 add-zsh-hook precmd _vcs_git_indicator
-add-zsh-hook chpwd _depth_and_contents_of_pwd
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
