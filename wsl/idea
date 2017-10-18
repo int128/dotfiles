@@ -1,0 +1,6 @@
+#!/bin/bash -xe
+cd $HOME/bin/idea-*/bin
+(
+trap - SIGINT
+exec ./idea.sh
+) &
