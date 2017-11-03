@@ -151,6 +151,12 @@ export EDITOR=vim
   export HOMEBREW_CASK_OPTS="--caskroom=$HOME/.homebrew/caskroom --binarydir=$HOME/.homebrew/bin"
 }
 
+# gcloud
+[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk ] && {
+  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+}
+
 # Ruby
 [ -x ~/.rbenv/bin/rbenv ] && {
   export PATH="$HOME/.rbenv/bin:$PATH"
