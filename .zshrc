@@ -148,7 +148,6 @@ export EDITOR=vim
 [ -x ~/.homebrew/bin/brew ] && {
   export PATH="$HOME/.homebrew/bin:$PATH"
   export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
-  export HOMEBREW_CASK_OPTS="--caskroom=$HOME/.homebrew/caskroom --binarydir=$HOME/.homebrew/bin"
 }
 
 # gcloud
