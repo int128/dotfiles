@@ -172,7 +172,6 @@ whence gem >/dev/null && {
 
 # Golang
 [ -d ~/repo/go ] && export GOPATH=~/repo/go
-[ -d /usr/local/go/bin ] && export PATH="/usr/local/go/bin:$PATH"
 
 
 #
