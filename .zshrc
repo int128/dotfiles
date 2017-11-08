@@ -173,6 +173,9 @@ whence gem >/dev/null && {
 # Golang
 [ -d ~/repo/go ] && export GOPATH=~/repo/go
 
+# MacVim
+[ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
+
 
 #
 # Aliases and functions
