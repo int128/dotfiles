@@ -216,11 +216,6 @@ function without_proxy () {
   http_proxy= https_proxy= "$@"
 }
 
-# OS X Terminal App with sudo privileges
-function sudo_term () {
-  osascript -e 'do shell script "/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" with administrator privileges'
-}
-
 # OS X Notification
 function display_notification () {
   osascript -e 'on run argv
@@ -246,48 +241,7 @@ function random_alphanumsym () {
   LANG=C tr -dc 'a-zA-Z0-9!#$%&()@/' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
 }
 
-# PKI certificate (requires GNU certtool)
-function certtool_generate_key () {
-  local key_file="$1"
-  certtool -p --bits 4096 --outfile "$key_file"
-}
-
-function certtool_generate_csr () {
-  local key_file="$1"
-  local template_file="$2"
-  local csr_file="$3"
-  certtool -q --hash SHA512 --load-privkey "$key_file" --template "$template_file" --outfile "$csr_file"
-}
-
-function certtool_sign_crt () {
-  local ca_key="$1"
-  local ca_crt="$2"
-  local csr_file="$3"
-  local crt_file="$4"
-  certtool -c --hash SHA512 --load-ca-privkey "$ca_key" --load-ca-certificate "$ca_crt" --load-request "$csr_file" --outfile "$crt_file"
-}
-
-function certtool_generate_self_crt () {
-  local key_file="$1"
-  local template_file="$2"
-  local crt_file="$3"
-  certtool -s --hash SHA512 --load-privkey "$key_file" --template "$template_file" --outfile "$crt_file"
-}
-
-function certtool_generate_dh_patams () {
-  local dh_file="$1"
-  certtool --generate-dh-params --bits 4096 --outfile "$dh_file"
-}
-
-# VirtualBox
-function virtualbox_list_vms () {
-  VBoxManage list vms "$@"
-}
-
-function virtualbox_start_vm () {
-  VBoxManage startvm "$@"
-}
-
+# Build tools
 function gradle_dependency () {
   local module="$1"
   find ~/.gradle/caches -name "${module}*.jar" ! -name '*-sources.jar' -type f
