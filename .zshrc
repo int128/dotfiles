@@ -109,8 +109,10 @@ function {
   local git='$_vcs_git_indicator'
   [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
+  local up=$'%{\e[A%}'
+  local down=$'%{\e[B%}'
   PROMPT="$dir $user($via$host) $rc $git$terminal$mark"
-  RPROMPT="$now"
+  RPROMPT="$up$now$down"
 }
 
 function _window_title_cmd () {
