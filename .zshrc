@@ -70,11 +70,10 @@ fi
 setopt prompt_subst
 
 typeset -A emoji
-emoji[ok]=$'\U2705'
-emoji[error]=$'\U274C'
-emoji[git]=$'\U1F500'
-emoji[git_changed]=$'\U1F37A'
-emoji[git_untracked]=$'\U1F363'
+emoji[ok]=$'\U2728'
+emoji[error]=$'\U1F525'
+emoji[git_changed]=$'\U1F363'
+emoji[git_untracked]=$'\U1F525'
 emoji[git_clean]=$'\U2728'
 emoji[right_arrow]=$'\U2794'
 
@@ -88,11 +87,14 @@ function _vcs_git_indicator () {
     git_info[changed]=${#git_status:#\?\?*}
     git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
     git_info[clean]=$(( $#git_status == 0 ))
-
-    git_indicator=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
-    (( ${git_info[clean]}     )) && git_indicator+=("${emoji[git_clean]}")
-    (( ${git_info[changed]}   )) && git_indicator+=("${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
-    (( ${git_info[untracked]} )) && git_indicator+=("${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
+    if (( ${git_info[clean]}     )); then
+      git_indicator+=("${emoji[git_clean]}")
+    else
+      (( ${git_info[untracked]} )) && git_indicator+=("%{%F{red}%}${git_info[untracked]}*%{%f%}")
+      (( ${git_info[changed]}   )) && git_indicator+=("%{%F{yellow}%}${git_info[changed]}%{%f%}")
+      git_indicator+=("${emoji[git_changed]}")
+    fi
+    git_indicator+=("%{%F{blue}%} ${git_info[branch]} %{%f%}")
   }
   _vcs_git_indicator="${git_indicator}"
 }
@@ -101,18 +103,18 @@ add-zsh-hook precmd _vcs_git_indicator
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
+  local now='%{%F{green}%}%*%{%f%}'
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
-  local user='%{%F{green}%}%n%{%f%}'
-  local host='%{%F{green}%}%m%{%f%}'
+  local user='%{%F{blue}%}%n%{%f%}'
+  local host='%{%F{blue}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
   local git='$_vcs_git_indicator'
   [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
-  PROMPT="$dir $user($via$host) $rc $git$terminal$mark"
-  RPROMPT="$up$now$down"
+  PROMPT="$dir $user($via$host) $rc$terminal$mark"
+  RPROMPT="$up$git$now$down"
 }
 
 function _window_title_cmd () {
