@@ -175,7 +175,10 @@ whence gem >/dev/null && {
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Golang
-[ -d ~/repo/go ] && export GOPATH=~/repo/go
+[ -d ~/repo/go ] && {
+  export GOPATH=~/repo/go
+  export PATH="$PATH:$GOPATH/bin"
+}
 
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
