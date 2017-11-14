@@ -9,7 +9,7 @@
   co = checkout
   com = checkout master
   ls = log --graph --decorate --oneline
-  ll = log --stat --decorate --oneline --find-renames
+  ll = log --graph --stat --pretty=fuller
   s = status --short --branch
   pom = push origin master
   rom = rebase origin/master
