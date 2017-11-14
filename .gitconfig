@@ -8,6 +8,7 @@
   ci = commit
   co = checkout
   com = checkout master
+  dh = diff HEAD^
   ls = log --graph --decorate --oneline
   ll = log --graph --stat --pretty=fuller
   s = status --short --branch
