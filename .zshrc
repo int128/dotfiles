@@ -171,6 +171,10 @@ whence gem >/dev/null && {
   export PATH="$GEM_HOME/bin:$PATH"
 }
 
+# Node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
