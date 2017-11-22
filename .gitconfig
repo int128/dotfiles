@@ -10,7 +10,7 @@
   com = checkout master
   dh = diff HEAD^
   ls = log --graph --decorate --oneline
-  ll = log --graph --stat --pretty=fuller
+  ll = log --graph --decorate --stat --pretty=fuller
   s = status --short --branch
   pom = push origin master
   rom = rebase origin/master
