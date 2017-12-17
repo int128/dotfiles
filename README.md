@@ -21,10 +21,10 @@ echo enable_proxy >> .zshrc.local
 
 See also OS specific installations:
 
-* [OS X](osx)
+* [macOS](macos)
 * [Windows Subsystem for Linux (WSL)](wsl)
-* [Cygwin](cygwin)
-* [MSYS2](msys2)
+* [Cygwin](cygwin) (deprecated)
+* [MSYS2](msys2) (deprecated)
 
 Sandbox
 -------
