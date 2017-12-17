@@ -87,14 +87,14 @@ function _vcs_git_indicator () {
     git_info[changed]=${#git_status:#\?\?*}
     git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
     git_info[clean]=$(( $#git_status == 0 ))
-    if (( ${git_info[clean]}     )); then
-      git_indicator+=("${emoji[git_clean]}")
+    git_indicator="%{%F{blue}%} ${git_info[branch]} %{%f%}"
+    if (( ${git_info[clean]} )); then
+      git_indicator+="${emoji[git_clean]} "
     else
-      (( ${git_info[untracked]} )) && git_indicator+=("%{%F{red}%}${git_info[untracked]}*%{%f%}")
-      (( ${git_info[changed]}   )) && git_indicator+=("%{%F{yellow}%}${git_info[changed]}%{%f%}")
-      git_indicator+=("${emoji[git_changed]}")
+      git_indicator+="${emoji[git_changed]}  "
+      (( ${git_info[untracked]} )) && git_indicator+="%{%F{red}%}${git_info[untracked]}*%{%f%}"
+      (( ${git_info[changed]}   )) && git_indicator+="%{%F{yellow}%}${git_info[changed]}%{%f%}"
     fi
-    git_indicator+=("%{%F{blue}%} ${git_info[branch]} %{%f%}")
   }
   _vcs_git_indicator="${git_indicator}"
 }
@@ -107,14 +107,14 @@ function {
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{blue}%}%n%{%f%}'
   local host='%{%F{blue}%}%m%{%f%}'
-  [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
+  [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]} %{%b%} "
   local git='$_vcs_git_indicator'
   [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
-  PROMPT="$dir $user($via$host) $rc$terminal$mark"
-  RPROMPT="$up$git$now$down"
+  PROMPT="$dir $user($via$host) $rc$git$terminal$mark"
+  RPROMPT="$up$now$down"
 }
 
 function _window_title_cmd () {
