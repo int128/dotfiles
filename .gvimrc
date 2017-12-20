@@ -10,5 +10,5 @@ set cmdheight=1
 if has('win32') || has('win64')
   set guifont=MeiryoKe_Gothic:h14
 else
-  set guifont=Menlo:h14
+  set guifont=Monospace\ 10.5
 end
