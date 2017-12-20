@@ -96,25 +96,31 @@ function _vcs_git_indicator () {
       (( ${git_info[changed]}   )) && git_indicator+="%{%F{yellow}%}${git_info[changed]}%{%f%}"
     fi
   }
-  _vcs_git_indicator="${git_indicator}"
+  _vcs_git_indicator="$git_indicator"
+}
+
+function _load_indicator () {
+  _load_indicator="${$(uptime)#*load averages: }"
 }
 
 add-zsh-hook precmd _vcs_git_indicator
+add-zsh-hook precmd _load_indicator
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  local now='%{%F{green}%}%*%{%f%}'
+  local now='%{%F{yellow}%}%*%{%f%}'
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{blue}%}%n%{%f%}'
   local host='%{%F{blue}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]} %{%b%} "
   local git='$_vcs_git_indicator'
+  local load='%{%F{green}%}$_load_indicator%{%f%}'
   [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
   PROMPT="$dir $user($via$host) $rc$git$terminal$mark"
-  RPROMPT="$up$now$down"
+  RPROMPT="$up($load) $now$down"
 }
 
 function _window_title_cmd () {
