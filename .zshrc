@@ -133,7 +133,7 @@ function _window_title_cmd () {
 function _window_title_exec () {
   local pwd="${PWD/~HOME/~}"
   print -n "\e]0;"
-  print -n "${1%% *}:${pwd##*/} (${HOST%%.*})"
+  print -n "${1%% *} (${pwd##*/}) (${HOST%%.*})"
   print -n "\a"
 }
 
