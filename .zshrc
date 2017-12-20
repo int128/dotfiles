@@ -100,7 +100,7 @@ function _vcs_git_indicator () {
 }
 
 function _load_indicator () {
-  _load_indicator="${$(uptime)#*load averages: }"
+  _load_indicator="${$(uptime)##*: }"
 }
 
 add-zsh-hook precmd _vcs_git_indicator
