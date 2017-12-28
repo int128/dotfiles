@@ -160,12 +160,6 @@ export EDITOR=vim
   export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
 }
 
-# gcloud
-[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk ] && {
-  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-}
-
 # Ruby
 [ -x ~/.rbenv/bin/rbenv ] && {
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -192,6 +186,23 @@ export NVM_DIR="$HOME/.nvm"
 
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
+
+# Google cloud
+[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk ] && {
+  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+}
+
+# Kubernetes
+function kubectl () {
+  local kubectl="$(whence -p kubectl 2> /dev/null)"
+  [ -z "$_lazy_kubectl_completion" ] && {
+    echo "\e[31m$0 completion zsh\e[0m" > /dev/stderr
+    source <("$kubectl" completion zsh)
+    _lazy_kubectl_completion=1
+  }
+  "$kubectl" "$@"
+}
 
 
 #
