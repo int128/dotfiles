@@ -1,0 +1,18 @@
+!! .Xdefaults
+
+!! xterm
+XTerm*loginShell: true
+XTerm*scrollBar: true
+XTerm*scrollbar.width: 8
+XTerm*geometry: 120x40
+XTerm*faceName: Menlo:size=10.5
+XTerm*faceNameDoublesize: M+ 1m
+
+XTerm*background: #fdf6e3
+XTerm*foreground: #657b83
+XTerm*fading: 40
+XTerm*fadeColor: #fdf6e3
+XTerm*cursorColor: #586e75
+XTerm*pointerColorBackground: #93a1a1
+XTerm*pointerColorForeground: #586e75
+
