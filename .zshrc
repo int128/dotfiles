@@ -179,9 +179,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Golang
-[ -d ~/repo/go ] && {
-  export GOPATH=~/repo/go
-  export PATH="$PATH:$GOPATH/bin"
+[ -d ~/go ] && {
+  export PATH="$PATH:$HOME/go/bin"
 }
 
 # MacVim
