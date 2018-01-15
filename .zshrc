@@ -98,13 +98,12 @@ function _vcs_git_indicator () {
   }
   _vcs_git_indicator="$git_indicator"
 }
+whence git 2> /dev/null && add-zsh-hook precmd _vcs_git_indicator
 
 function _load_indicator () {
   _load_indicator="${$(uptime)##*: }"
 }
-
-add-zsh-hook precmd _vcs_git_indicator
-add-zsh-hook precmd _load_indicator
+whence uptime 2> /dev/null && add-zsh-hook precmd _load_indicator
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
