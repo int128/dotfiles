@@ -46,3 +46,19 @@ Configure ConEmu task.
 set MSYSTEM=MINGW64 & C:\msys64\usr\bin\conemu-msys2-64.exe /usr/bin/zsh --login -i
 ```
 
+
+Tips
+----
+
+If you encountered the following error,
+
+```
+address space needed by 'zutil.dll' (0x300000) is already occupied
+```
+
+try opening `ash.exe` and running the following command:
+
+```sh
+/bin/rebaseall -v
+```
+

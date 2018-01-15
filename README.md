@@ -23,7 +23,6 @@ See also OS specific installations:
 
 * [macOS](macos)
 * [Windows Subsystem for Linux (WSL)](wsl)
-* [Cygwin](cygwin) (deprecated)
 * [MSYS2](msys2) (deprecated)
 
 Sandbox
