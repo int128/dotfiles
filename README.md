@@ -25,12 +25,3 @@ See also OS specific installations:
 * [Windows Subsystem for Linux (WSL)](wsl)
 * [MSYS2](msys2) (deprecated)
 
-Sandbox
--------
-
-Run a container.
-
-```zsh
-docker run -it --rm int128/dotfiles
-```
-
