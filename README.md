@@ -1,10 +1,8 @@
-dotfiles [![Build Status](https://travis-ci.org/int128/dotfiles.svg?branch=master)](https://travis-ci.org/int128/dotfiles)
-========
+# dotfiles [![Build Status](https://travis-ci.org/int128/dotfiles.svg?branch=master)](https://travis-ci.org/int128/dotfiles)
 
 Dot files of my environment.
 
-Install
--------
+## Install
 
 Clone the repository into your home and run the installation script.
 
@@ -19,9 +17,27 @@ Environment specific configuration goes to `.zshrc.local`.
 echo enable_proxy >> .zshrc.local
 ```
 
-See also OS specific installations:
+### Platforms
 
-* [macOS](macos)
-* [Windows Subsystem for Linux (WSL)](wsl)
-* [MSYS2](msys2) (deprecated)
+See also platform specific installations:
+
+- [macOS](macos)
+- [Windows Subsystem for Linux (WSL)](wsl)
+- [MSYS2](msys2) (deprecated)
+
+### Languages
+
+Additional setup:
+
+```sh
+# Workspace (~/repo)
+ln -s /Volume/Data/repo
+
+# GOPATH (~/go)
+ln -s repo/go
+
+# JRebel (~/repo/jrebel)
+unzip -d repo jrebel-x.x.x-nosetup.zip
+./repo/jrebel/bin/activate.sh 'LICENSE'
+```
 

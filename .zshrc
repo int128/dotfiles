@@ -182,6 +182,9 @@ export NVM_DIR="$HOME/.nvm"
   export PATH="$PATH:$HOME/go/bin"
 }
 
+# JRebel
+[ -d ~/repo/jrebel ] && export JREBEL="$HOME/repo/jrebel/lib/libjrebel64.dylib"
+
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
 
