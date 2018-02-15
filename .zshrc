@@ -220,6 +220,7 @@ case "$(uname)" in
 esac
 
 alias ll='ls -lah'
+alias lt='ll -tr'
 
 # tmux: attach or create session
 function t () {
