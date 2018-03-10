@@ -70,13 +70,15 @@ fi
 setopt prompt_subst
 
 typeset -A emoji
-emoji[ok]=$'\U2728'
-emoji[error]=$'\U1F525'
-emoji[git_changed]=$'\U1F363'
-emoji[git_untracked]=$'\U1F525'
-emoji[git_clean]=$'\U2728'
-emoji[right_arrow]=$'\U2794'
+emoji[ok]=$'\U2728 '
+emoji[error]=$'\U1F525 '
+emoji[git_changed]=$'\U1F363 '
+emoji[git_untracked]=$'\U1F525 '
+emoji[git_clean]=$'\U2728 '
+emoji[right_arrow]=$'\U2794 '
+emoji[kube]=$'\U1F433 '
 
+# Git indicator
 function _vcs_git_indicator () {
   typeset -A git_info
   local git_indicator git_status
@@ -87,11 +89,11 @@ function _vcs_git_indicator () {
     git_info[changed]=${#git_status:#\?\?*}
     git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
     git_info[clean]=$(( $#git_status == 0 ))
-    git_indicator="%{%F{blue}%} ${git_info[branch]} %{%f%}"
+    git_indicator="%{%F{blue}%}${git_info[branch]} %{%f%}"
     if (( ${git_info[clean]} )); then
       git_indicator+="${emoji[git_clean]} "
     else
-      git_indicator+="${emoji[git_changed]}  "
+      git_indicator+="${emoji[git_changed]} "
       (( ${git_info[untracked]} )) && git_indicator+="%{%F{red}%}${git_info[untracked]}*%{%f%}"
       (( ${git_info[changed]}   )) && git_indicator+="%{%F{yellow}%}${git_info[changed]}%{%f%}"
     fi
@@ -100,26 +102,33 @@ function _vcs_git_indicator () {
 }
 whence git >/dev/null && add-zsh-hook precmd _vcs_git_indicator
 
-function _load_indicator () {
-  _load_indicator="${$(uptime)##*: }"
+# System load indicator
+function _sys_load_indicator () {
+  _sys_load_indicator="%{%F{green}%}${$(uptime)##*: }%{%f%}"
 }
-whence uptime >/dev/null && add-zsh-hook precmd _load_indicator
+whence uptime >/dev/null && add-zsh-hook precmd _sys_load_indicator
+
+# Kubernetes context indicator
+function _kube_context_indicator () {
+  [ "$_kubectl" ] && {
+    _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$("$_kubectl" config current-context)%{%f%}"
+  }
+}
+add-zsh-hook precmd _kube_context_indicator
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%*%{%f%}'
-  local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
+  local rc="%(?,${emoji[ok]},${emoji[error]} %{%F{red}%}%?%{%f%})"
   local user='%{%F{blue}%}%n%{%f%}'
   local host='%{%F{blue}%}%m%{%f%}'
   [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]} %{%b%} "
-  local git='$_vcs_git_indicator'
-  local load='%{%F{green}%}$_load_indicator%{%f%}'
   [ "$TERM_PROGRAM" ] && local terminal=$'\e]1;%1~\a'
   local mark=$'\n%# '
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
-  PROMPT="$dir $user($via$host) $rc$git$terminal$mark"
-  RPROMPT="$up($load) $now$down"
+  PROMPT="$dir $user($via$host) $rc \$_vcs_git_indicator \$_kube_context_indicator$terminal$mark"
+  RPROMPT="$up(\$_sys_load_indicator) $now$down"
 }
 
 function _window_title_cmd () {
@@ -196,14 +205,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # Kubernetes
 function kubectl () {
-  local kubectl="$(whence -p kubectl 2> /dev/null)"
-  [ -z "$_lazy_kubectl_completion" ] && {
+  [ -z "$_kubectl" ] && {
+    _kubectl="$(whence -p kubectl 2> /dev/null)"
     echo -n "\e[31m$0 completion zsh... \e[0m" > /dev/stderr
-    source <("$kubectl" completion zsh)
+    source <("$_kubectl" completion zsh)
     echo > /dev/stderr
-    _lazy_kubectl_completion=1
   }
-  "$kubectl" "$@"
+  "$_kubectl" "$@"
 }
 
 
