@@ -198,8 +198,9 @@ export NVM_DIR="$HOME/.nvm"
 function kubectl () {
   local kubectl="$(whence -p kubectl 2> /dev/null)"
   [ -z "$_lazy_kubectl_completion" ] && {
-    echo "\e[31m$0 completion zsh\e[0m" > /dev/stderr
+    echo -n "\e[31m$0 completion zsh... \e[0m" > /dev/stderr
     source <("$kubectl" completion zsh)
+    echo > /dev/stderr
     _lazy_kubectl_completion=1
   }
   "$kubectl" "$@"
