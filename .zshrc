@@ -111,7 +111,10 @@ whence uptime >/dev/null && add-zsh-hook precmd _sys_load_indicator
 # Kubernetes context indicator
 function _kube_context_indicator () {
   [ "$_kubectl" ] && {
-    _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$("$_kubectl" config current-context)%{%f%}"
+    local current_context="$("$_kubectl" config current-context 2> /dev/null)"
+    [ "$current_context" ] && {
+      _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$current_context%{%f%}"
+    }
   }
 }
 add-zsh-hook precmd _kube_context_indicator
