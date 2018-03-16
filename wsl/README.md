@@ -1,11 +1,30 @@
 # Install on WSL
 
+This may work on both Ubuntu and Debian.
+
+## Setup
+
+Bootstrap:
+
+```sh
+sudo apt upgrade
+sudo apt update
+sudo apt install git vim
+```
+
+Install:
+
 ```sh
 umask 022
 git clone https://github.com/int128/dotfiles
+./dotfiles/install.sh
+./dotfiles/wsl/install.sh
+```
 
-./install.sh
-./wsl/install.sh
+Change the default shell.
+
+```sh
+chsh -s /bin/zsh
 ```
 
 ## xterm

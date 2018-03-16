@@ -1,8 +1,16 @@
 #!/bin/bash -xe
 
-DOCKER_COMPOSE_VERSION=1.17.0
+DOCKER_COMPOSE_VERSION=1.19.0
 
-sudo apt install zsh x11-apps xterm openjdk-8-jdk fonts-mplus
+sudo apt install -y \
+  lsb-release \
+  curl \
+  apt-transport-https \
+  zsh \
+  x11-apps \
+  xterm \
+  openjdk-8-jdk \
+  fonts-mplus
 
 # Store Git credentials
 git config --global credential.helper store
@@ -18,6 +26,7 @@ if ! grep 'DOCKER_HOST=' "$HOME/.zshrc.local"; then
 fi
 
 # Google Cloud
+# https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
 if [ ! -f /usr/bin/gcloud ]; then
   CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
   echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
