@@ -31,6 +31,11 @@ chsh -s /bin/zsh
 ln -s /mnt/c/Users/$USERNAME windows
 ```
 
+## Using git from Windows
+
+Download [wslgit](https://github.com/andy-5/wslgit) and save it into `%USERPROFILE%\AppData\Local\Programs\Git\cmd\git.exe`.
+Then add it to `PATH`.
+
 ## xterm
 
 Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
