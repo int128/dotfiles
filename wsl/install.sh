@@ -15,16 +15,6 @@ sudo apt install -y \
 # Store Git credentials
 git config --global credential.helper store
 
-# X server
-if ! grep 'DISPLAY=' "$HOME/.zshrc.local"; then
-  echo 'export DISPLAY=:0.0' >> "$HOME/.zshrc.local"
-fi
-
-# Use remote Docker on Windows
-if ! grep 'DOCKER_HOST=' "$HOME/.zshrc.local"; then
-  echo 'export DOCKER_HOST=tcp://0.0.0.0:2375' >> "$HOME/.zshrc.local"
-fi
-
 # Google Cloud
 # https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
 if [ ! -f /usr/bin/gcloud ]; then

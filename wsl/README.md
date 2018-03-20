@@ -21,7 +21,20 @@ git clone https://github.com/int128/dotfiles
 ./dotfiles/wsl/install.sh
 ```
 
-Additional steps:
+Create `.zsh.local`:
+
+```sh
+# Use VcXsrv
+export DISPLAY=:0.0
+
+# Use Docker for Windows via TCP socket
+export DOCKER_HOST=tcp://0.0.0.0:2375
+
+# Tell the default shell to xterm
+export SHELL=/bin/zsh
+```
+
+Configure:
 
 ```sh
 # Change the default shell
@@ -31,12 +44,14 @@ chsh -s /bin/zsh
 ln -s /mnt/c/Users/$USERNAME windows
 ```
 
-## Using git from Windows
+## Additional installation
+
+### Using git from Windows
 
 Download [wslgit](https://github.com/andy-5/wslgit) and save it into `%USERPROFILE%\AppData\Local\Programs\Git\cmd\git.exe`.
 Then add it to `PATH`.
 
-## xterm
+### X
 
 Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
@@ -46,7 +61,7 @@ Create a shortcut to open a xterm.
 C:\Windows\System32\wsl.exe DISPLAY=:0 xterm -e zsh -l
 ```
 
-## IDEA
+### IDEA
 
 Download [IDEA](https://www.jetbrains.com/idea/download/#section=linux) and install it.
 
