@@ -11,6 +11,8 @@ umask 022
   export LC_ALL="$LANG"
 }
 
+[ -z "$SHELL" ] && export SHELL=/bin/zsh
+
 #
 # General settings
 #
@@ -192,6 +194,9 @@ export NVM_DIR="$HOME/.nvm"
 # Golang
 [ -d ~/go ] && {
   export PATH="$PATH:$HOME/go/bin"
+}
+[ -d ~/bin/go/bin ] && {
+  export PATH="$PATH:$HOME/bin/go/bin"
 }
 
 # JRebel

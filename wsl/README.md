@@ -4,62 +4,31 @@ This may work on both Ubuntu and Debian.
 
 ## Setup
 
-Bootstrap:
-
 ```sh
+# Bootstrap
 sudo apt upgrade
 sudo apt update
 sudo apt install git vim
-```
 
-Install:
-
-```sh
+# Install
 umask 022
 git clone https://github.com/int128/dotfiles
 ./dotfiles/install.sh
 ./dotfiles/wsl/install.sh
-```
 
-Create `.zsh.local`:
-
-```sh
-# Use VcXsrv
-export DISPLAY=:0.0
-
-# Use Docker for Windows via TCP socket
-export DOCKER_HOST=tcp://0.0.0.0:2375
-
-# Tell the default shell to xterm
-export SHELL=/bin/zsh
-```
-
-Configure:
-
-```sh
 # Change the default shell
 chsh -s /bin/zsh
-
-# Symlink to Windows user folder
-ln -s /mnt/c/Users/$USERNAME windows
 ```
 
 ## Additional installation
-
-### Using git from Windows
-
-Download [wslgit](https://github.com/andy-5/wslgit) and save it into `%USERPROFILE%\AppData\Local\Programs\Git\cmd\git.exe`.
-Then add it to `PATH`.
 
 ### X
 
 Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
-Create a shortcut to open a xterm.
+## Visual Studio Code
 
-```
-C:\Windows\System32\wsl.exe DISPLAY=:0 xterm -e zsh -l
-```
+Follow installation steps on https://code.visualstudio.com/docs/setup/linux.
 
 ### IDEA
 

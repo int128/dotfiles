@@ -15,6 +15,17 @@ sudo apt install -y \
 # Store Git credentials
 git config --global credential.helper store
 
+# Create symlink to Windows home
+ln -snf "/mnt/c/Users/$USERNAME" ~/windows
+
+# Environment specific settings
+cat > "$HOME/.zshrc.local" <<EOF
+# Use VcXsrv
+export DISPLAY=:0.0
+# Use Docker for Windows via TCP socket
+export DOCKER_HOST=tcp://0.0.0.0:2375
+EOF
+
 # Google Cloud
 # https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
 if [ ! -f /usr/bin/gcloud ]; then
