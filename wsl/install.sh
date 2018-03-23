@@ -9,14 +9,20 @@ sudo apt install -y \
   zsh \
   x11-apps \
   xterm \
-  openjdk-8-jdk \
-  fonts-mplus
+  openjdk-8-jdk
+
+sudo chsh -s /bin/zsh "$USERNAME"
 
 # Store Git credentials
 git config --global credential.helper store
 
 # Create symlink to Windows home
 ln -snf "/mnt/c/Users/$USERNAME" ~/windows
+
+# Create symlink to Windows fonts
+ln -sf /mnt/c/Windows/Fonts/Menlo-Regular.ttf ~/.fonts
+ln -sf /mnt/c/Windows/Fonts/meiryo.ttc ~/.fonts
+ln -sf /mnt/c/Windows/Fonts/meiryob.ttc ~/.fonts
 
 # Environment specific settings
 cat > "$HOME/.zshrc.local" <<EOF
@@ -42,10 +48,3 @@ if [ ! -f /usr/local/bin/docker-compose ]; then
   sudo chmod +x /usr/local/bin/docker-compose
 fi
 docker-compose --version
-
-# Fonts
-if [ ! -d ~/.fonts ]; then
-  git clone --depth=1 https://github.com/hbin/top-programming-fonts ~/.fonts
-  fc-cache -f
-fi
-

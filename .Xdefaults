@@ -6,7 +6,7 @@ XTerm*scrollBar: true
 XTerm*scrollbar.width: 8
 XTerm*geometry: 120x40
 XTerm*faceName: Menlo:size=10.5
-XTerm*faceNameDoublesize: M+ 1m
+XTerm*faceNameDoublesize: Meiryo
 
 XTerm*background: #fdf6e3
 XTerm*foreground: #657b83

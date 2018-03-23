@@ -15,9 +15,6 @@ umask 022
 git clone https://github.com/int128/dotfiles
 ./dotfiles/install.sh
 ./dotfiles/wsl/install.sh
-
-# Change the default shell
-chsh -s /bin/zsh
 ```
 
 ## Additional installation
@@ -26,7 +23,7 @@ chsh -s /bin/zsh
 
 Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
-## Visual Studio Code
+### Visual Studio Code
 
 Follow installation steps on https://code.visualstudio.com/docs/setup/linux.
 
