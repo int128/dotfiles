@@ -19,17 +19,13 @@ git clone https://github.com/int128/dotfiles
 
 ## Additional installation
 
-### X
+### VcXsrv
 
-Install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
-
-### Visual Studio Code
-
-Follow installation steps on https://code.visualstudio.com/docs/setup/linux.
+Install from https://sourceforge.net/projects/vcxsrv/.
 
 ### IDEA
 
-Download [IDEA](https://www.jetbrains.com/idea/download/#section=linux) and install it.
+Download from https://www.jetbrains.com/idea/download/#section=linux.
 
 ```sh
 mkdir bin
