@@ -11,13 +11,13 @@ sudo apt install -y \
   xterm \
   openjdk-8-jdk
 
-sudo chsh -s /bin/zsh "$USERNAME"
+sudo chsh -s /bin/zsh "$USER"
 
 # Store Git credentials
 git config --global credential.helper store
 
 # Create symlink to Windows home
-ln -snf "/mnt/c/Users/$USERNAME" ~/windows
+ln -snf "/mnt/c/Users/$USER" ~/windows
 
 # Create symlink to Windows fonts
 ln -sf /mnt/c/Windows/Fonts/Menlo-Regular.ttf ~/.fonts
@@ -41,6 +41,7 @@ if [ ! -f /usr/bin/code ]; then
   sudo apt-get update
   sudo apt-get install code # or code-insiders
 fi
+code --version
 
 # Google Cloud
 # https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
@@ -50,7 +51,7 @@ if [ ! -f /usr/bin/gcloud ]; then
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
   sudo apt-get update && sudo apt-get install google-cloud-sdk
 fi
-gcloud components list
+gcloud version
 
 # Docker Compose
 if [ ! -f /usr/local/bin/docker-compose ]; then
