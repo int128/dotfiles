@@ -19,10 +19,15 @@ git config --global credential.helper store
 # Create symlink to Windows home
 ln -snf "/mnt/c/Users/$USER" ~/windows
 
-# Create symlink to Windows fonts
-ln -sf /mnt/c/Windows/Fonts/Menlo-Regular.ttf ~/.fonts
-ln -sf /mnt/c/Windows/Fonts/meiryo.ttc ~/.fonts
-ln -sf /mnt/c/Windows/Fonts/meiryob.ttc ~/.fonts
+# Copy Windows fonts
+install_windows_font () {
+  if [ ! -f "$HOME/.fonts/$1" ]; then
+    cp -a "/mnt/c/Windows/Fonts/$1" "$HOME/.fonts"
+  fi
+}
+install_windows_font Menlo-Regular.ttf
+install_windows_font meiryo.ttc
+install_windows_font meiryob.ttc
 
 # Environment specific settings
 cat > "$HOME/.zshrc.local" <<EOF
