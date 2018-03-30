@@ -19,7 +19,11 @@ git config --global credential.helper store
 # Create symlink to Windows home
 ln -snf "/mnt/c/Users/$USER" ~/windows
 
+# Symlink .Xdefaults
+ln -sf dotfiles/.Xdefaults ~/.Xdefaults
+
 # Copy Windows fonts
+mkdir -p "$HOME/.fonts"
 install_windows_font () {
   if [ ! -f "$HOME/.fonts/$1" ]; then
     cp -a "/mnt/c/Windows/Fonts/$1" "$HOME/.fonts"
@@ -43,8 +47,8 @@ if [ ! -f /usr/bin/code ]; then
   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-  sudo apt-get update
-  sudo apt-get install code # or code-insiders
+  sudo apt update
+  sudo apt install -y code # or code-insiders
 fi
 code --version
 
@@ -52,9 +56,10 @@ code --version
 # https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu
 if [ ! -f /usr/bin/gcloud ]; then
   CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-  echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-  sudo apt-get update && sudo apt-get install google-cloud-sdk
+  sudo apt update
+  sudo apt install -y google-cloud-sdk
 fi
 gcloud version
 

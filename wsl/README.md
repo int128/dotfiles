@@ -6,8 +6,8 @@ This may work on both Ubuntu and Debian.
 
 ```sh
 # Bootstrap
-sudo apt upgrade
 sudo apt update
+sudo apt upgrade
 sudo apt install git vim
 
 # Install
@@ -16,6 +16,8 @@ git clone https://github.com/int128/dotfiles
 ./dotfiles/install.sh
 ./dotfiles/wsl/install.sh
 ```
+
+Restart WSL and then `zsh` will show up.
 
 ## Additional installation
 
