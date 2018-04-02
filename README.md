@@ -22,6 +22,7 @@ echo enable_proxy >> .zshrc.local
 See also platform specific installations:
 
 - [macOS](macos)
+- [Google Cloud Shell](cloudshell)
 - [Windows Subsystem for Linux (WSL)](wsl)
 - [MSYS2](msys2) (deprecated)
 
