@@ -8,11 +8,15 @@ sudo apt install -y \
   apt-transport-https \
   zsh \
   x11-apps \
-  # vscode requires libxss1
-  libxss1 \
   xterm \
   vim-gnome \
   openjdk-8-jdk-headless
+
+# Install vscode dependencies
+sudo apt install -y \
+  libxss1 \
+  libgtk2.0-0 \
+  libasound2
 
 sudo chsh -s /bin/zsh "$USER"
 
