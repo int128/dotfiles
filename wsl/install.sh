@@ -9,8 +9,13 @@ sudo apt install -y \
   zsh \
   x11-apps \
   xterm \
-  vim-gnome \
-  openjdk-8-jdk-headless
+  vim-gnome
+
+# Development tools
+sudo apt install -y \
+  openjdk-8-jdk-headless \
+  docker.io \
+  docker-compose
 
 # Install vscode dependencies
 sudo apt install -y \
@@ -69,10 +74,3 @@ if [ ! -f /usr/bin/gcloud ]; then
   sudo apt install -y google-cloud-sdk
 fi
 gcloud version
-
-# Docker Compose
-if [ ! -f /usr/local/bin/docker-compose ]; then
-  sudo curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m`" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-fi
-docker-compose --version
