@@ -25,6 +25,11 @@ Restart WSL and then `zsh` will show up.
 
 Install from https://sourceforge.net/projects/vcxsrv/.
 
+### Golang
+
+Download and extract the tarball.
+See https://golang.org/doc/install#tarball.
+
 ### IDEA
 
 Download from https://www.jetbrains.com/idea/download/#section=linux.

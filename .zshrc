@@ -195,8 +195,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -d ~/go ] && {
   export PATH="$PATH:$HOME/go/bin"
 }
-[ -d ~/bin/go/bin ] && {
-  export PATH="$PATH:$HOME/bin/go/bin"
+[ -d /usr/local/go/bin ] && {
+  export PATH="$PATH:/usr/local/go/bin"
 }
 
 # JRebel
