@@ -173,6 +173,11 @@ export EDITOR=vim
   export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
 }
 
+# Python
+[ -d ~/Library/Python/2.7/bin ] && {
+  export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+}
+
 # Ruby
 whence gem >/dev/null && {
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
