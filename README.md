@@ -35,10 +35,8 @@ Additional setup:
 ln -s /Volume/Data/repo
 
 # GOPATH (~/go)
-ln -s repo/go
+ln -s /Volume/Data/repo/go
 
-# JRebel (~/repo/jrebel)
-unzip -d repo jrebel-x.x.x-nosetup.zip
-./repo/jrebel/bin/activate.sh 'LICENSE'
+# Python
+easy_install --user pip
 ```
-

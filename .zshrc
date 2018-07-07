@@ -174,19 +174,10 @@ export EDITOR=vim
 }
 
 # Ruby
-[ -x ~/.rbenv/bin/rbenv ] && {
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-}
-
 whence gem >/dev/null && {
   export GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
   export PATH="$GEM_HOME/bin:$PATH"
 }
-
-# Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
@@ -198,9 +189,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -d /usr/local/go/bin ] && {
   export PATH="$PATH:/usr/local/go/bin"
 }
-
-# JRebel
-[ -d ~/repo/jrebel ] && export JREBEL="$HOME/repo/jrebel/lib/libjrebel64.dylib"
 
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
