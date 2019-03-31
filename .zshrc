@@ -215,6 +215,10 @@ function kubectl () {
   "$_kubectl" "$@"
 }
 
+[ -d ~/.krew ] && {
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+}
+
 
 #
 # Aliases and functions
