@@ -13,5 +13,5 @@ alias ll='ls -la'
 
 export EDITOR=vim
 
-PS1='\e[33m\t \d \e[1;34m\w \e[0;32m\u\e[0m(\e[32m\h\e[0m)\e[0m\n$ '
+PS1='\e[1;34m\w\e[0m$ '
 
