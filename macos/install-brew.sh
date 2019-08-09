@@ -6,7 +6,6 @@ brew tap caskroom/versions
 brew cask install iterm2
 
 brew cask install google-chrome
-brew cask install atok
 brew cask install mplayerx
 brew cask install evernote
 brew cask install slack
