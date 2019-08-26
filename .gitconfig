@@ -16,6 +16,6 @@
   pom = push origin master
   rom = rebase origin/master
   fo = fetch origin
-  fom = "!git com && git fo && git rom"
+  fom = "!git com && git fo && git rpo && git rom"
   rpo = remote prune origin
 
