@@ -17,6 +17,10 @@ alias ll='ls -la'
 
 export EDITOR=vim
 
+if ! which __git_ps1 2>&1 /dev/null; then
+  alias __git_ps1=true
+fi
+
 PS1='\[\e[36m\]`__git_ps1` \[\e[1;34m\]\w\[\e[0m\] $ '
 
 if [ -f "$HOME/.bashrc.local" ]; then
