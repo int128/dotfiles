@@ -1,14 +1,14 @@
 # Install on macOS
 
-Install homebrew and cask.
+You need to install Xcode Command Line Tools to run `git`.
 
 ```sh
-./install.sh
-./install-brew-cask.sh
+# Install base
+./dotfiles/install.sh
+
+# Install for macOS
+./dotfiles/macos/install.sh
+
+# Install Homebrew packages
+./dotfiles/macos/install-brew.sh
 ```
-
-Install followings:
-
-* Xcode
-* Microsoft Remote Desktop
-* [ATOK Passport](https://www.justmyshop.com/camp/atok_passport/dl/)

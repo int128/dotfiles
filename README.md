@@ -1,42 +1,28 @@
 # dotfiles [![Build Status](https://travis-ci.org/int128/dotfiles.svg?branch=master)](https://travis-ci.org/int128/dotfiles)
 
-Dot files of my environment.
+This is a dotfiles of my environment.
 
-## Install
 
-Clone the repository into your home and run the installation script.
+## Getting Started
 
 ```zsh
+# Clone the repository
 git clone https://github.com/int128/dotfiles.git
-dotfiles/install.sh
+
+# Run the installation script
+./dotfiles/install.sh
 ```
 
-Environment specific configuration goes to `.zshrc.local`.
-
-```zsh
-echo enable_proxy >> .zshrc.local
-```
-
-### Platforms
-
-See also platform specific installations:
+It supports the following platforms:
 
 - [macOS](macos)
 - [Google Cloud Shell](cloudshell)
 - [Windows Subsystem for Linux (WSL)](wsl)
 - [MSYS2](msys2) (deprecated)
 
-### Languages
+You can put environment specific configuration to `.zshrc.local`.
+For example,
 
-Additional setup:
-
-```sh
-# Workspace (~/repo)
-ln -s /Volume/Data/repo
-
-# GOPATH (~/go)
-ln -s /Volume/Data/repo/go
-
-# Python
-easy_install --user pip
+```zsh
+echo enable_proxy >> .zshrc.local
 ```
