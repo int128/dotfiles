@@ -5,7 +5,7 @@ This is a dotfiles of my environment.
 
 ## Getting Started
 
-```zsh
+```sh
 # Clone the repository
 git clone https://github.com/int128/dotfiles.git
 
@@ -19,6 +19,13 @@ It supports the following platforms:
 - [Google Cloud Shell](cloudshell)
 - [Windows Subsystem for Linux (WSL)](wsl)
 - [MSYS2](msys2) (deprecated)
+
+You need to set up the credentials.
+
+- GitHub: https://github.com/settings/tokens
+- Google Cloud: `gcloud auth login`
+- AWS: `aws configure`
+- `.gnupg`
 
 You can put environment specific configuration to `.zshrc.local`.
 For example,
