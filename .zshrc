@@ -112,12 +112,7 @@ whence uptime >/dev/null && add-zsh-hook precmd _sys_load_indicator
 
 # Kubernetes context indicator
 function _kube_context_indicator () {
-  [ "$_kubectl" ] && {
-    local current_context="$("$_kubectl" config current-context 2> /dev/null)"
-    [ "$current_context" ] && {
-      _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$current_context%{%f%}"
-    }
-  }
+  # this will be set up in kubectl function (see below)
 }
 add-zsh-hook precmd _kube_context_indicator
 
@@ -194,16 +189,6 @@ export EDITOR=vim
 }
 
 # Kubernetes
-function kubectl () {
-  [ -z "$_kubectl" ] && {
-    _kubectl="$(whence -p kubectl 2> /dev/null)"
-    echo -n "\e[31m$0 completion zsh... \e[0m" > /dev/stderr
-    source <("$_kubectl" completion zsh)
-    echo > /dev/stderr
-  }
-  "$_kubectl" "$@"
-}
-
 [ -d ~/.krew ] && {
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 }
@@ -224,6 +209,29 @@ esac
 
 alias ll='ls -lah'
 alias lt='ll -tr'
+
+# Kubernetes
+function kubectl () {
+  local real_kubectl="$(whence -p kubectl 2> /dev/null)"
+  if [ "$real_kubectl" ]; then
+    echo -n "\e[31m$0 completion zsh... \e[0m" > /dev/stderr
+    source <("$real_kubectl" completion zsh)
+    echo > /dev/stderr
+  fi
+  unfunction kubectl
+
+  # Set up the context indicator
+  function _kube_context_indicator () {
+    local current_context="$(kubectl config current-context 2> /dev/null)"
+    if [ "$current_context" ]; then
+      _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$current_context%{%f%}"
+    else
+      _kube_context_indicator=""
+    fi
+  }
+
+  kubectl "$@"
+}
 
 # tmux: attach or create session
 function t () {
