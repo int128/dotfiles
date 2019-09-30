@@ -22,9 +22,6 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'airblade/vim-gitgutter'
 
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'fatih/vim-go'
-
 call neobundle#end()
 filetype plugin indent on
 
