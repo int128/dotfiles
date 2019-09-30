@@ -10,7 +10,7 @@ brew cask install slack
 
 # Development
 brew install go
-brew install golangci-lint
+brew install golangci/tap/golangci-lint
 brew install node
 brew install yarn
 
@@ -28,4 +28,3 @@ brew install kops
 
 brew cask install docker
 brew cask install google-cloud-sdk
-brew cask install virtualbox
