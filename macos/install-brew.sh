@@ -1,30 +1,40 @@
-#!/bin/sh -xe
+#!/bin/bash -x
 
-brew cask install iterm2
+cask_target=(
+  # Desktop
+  iterm2
+  google-chrome
+  mplayerx
+  evernote
+  slack
 
-# Desktop
-brew cask install google-chrome
-brew cask install mplayerx
-brew cask install evernote
-brew cask install slack
+  # Development
+  visual-studio-code
+  atom
+  intellij-idea
+  goland
+  java
 
-# Development
-brew install go
-brew install golangci/tap/golangci-lint
-brew install node
-brew install yarn
+  # Infrastructure
+  docker
+  google-cloud-sdk
+)
 
-brew cask install visual-studio-code
-brew cask install atom
-brew cask install intellij-idea
-brew cask install goland
-brew cask install java
+brew cask install ${cask_target[*]}
 
-# Infrastructure
-brew install awscli
-brew install terraform
-brew install helmfile
-brew install kops
+target=(
+  # Development
+  go
+  golangci/tap/golangci-lint
+  node
+  yarn
 
-brew cask install docker
-brew cask install google-cloud-sdk
+  # Infrastructure
+  awscli
+  terraform
+  helmfile
+  kops
+)
+
+brew install ${target[*]}
+
