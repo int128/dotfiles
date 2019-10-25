@@ -210,6 +210,16 @@ esac
 alias ll='ls -lah'
 alias lt='ll -tr'
 
+# Enter demo style, e.g. taking a screenshot or live coding
+function enter_demo_style () {
+  local dir='%{%F{blue}%B%}%~%{%b%f%}'
+  PROMPT="$dir%# "
+  unset RPROMPT
+  add-zsh-hook -d precmd _window_title_cmd
+  add-zsh-hook -d preexec _window_title_exec
+  print -n "\e]0;Terminal\a"
+}
+
 # Kubernetes
 function kubectl () {
   local real_kubectl="$(whence -p kubectl 2> /dev/null)"
