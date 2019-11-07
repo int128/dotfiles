@@ -211,7 +211,7 @@ alias ll='ls -lah'
 alias lt='ll -tr'
 
 # Enter demo style, e.g. taking a screenshot or live coding
-function enter_demo_style () {
+function demo_style () {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   PROMPT="$dir%# "
   unset RPROMPT
