@@ -212,12 +212,11 @@ alias lt='ll -tr'
 
 # Enter demo style, e.g. taking a screenshot or live coding
 function demo_style () {
-  local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  PROMPT="$dir%# "
+  PROMPT="%{%F{blue}%B%}${emoji[right_arrow]}%{%b%f%} "
   unset RPROMPT
   add-zsh-hook -d precmd _window_title_cmd
   add-zsh-hook -d preexec _window_title_exec
-  print -n "\e]0;Terminal\a"
+  print -n "\e]0;terminal\a"
 }
 
 # Kubernetes
