@@ -8,4 +8,4 @@ if [ ! -d "$homebrew_dir" ]; then
 fi
 
 "$homebrew_dir/bin/brew" update
-"$homebrew_dir/bin/brew" cask
+"$homebrew_dir/bin/brew" cask help
