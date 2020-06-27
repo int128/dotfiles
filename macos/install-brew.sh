@@ -4,13 +4,11 @@ cask_target=(
   # Desktop
   iterm2
   google-chrome
-  mplayerx
   evernote
   slack
 
   # Development
   visual-studio-code
-  atom
   intellij-idea
   goland
   java
