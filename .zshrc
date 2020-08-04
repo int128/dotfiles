@@ -175,9 +175,6 @@ export EDITOR=vim
 [ -d ~/go ] && {
   export PATH="$PATH:$HOME/go/bin"
 }
-[ -d /usr/local/go/bin ] && {
-  export PATH="$PATH:/usr/local/go/bin"
-}
 
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
@@ -242,11 +239,6 @@ function kubectl () {
   kubectl "$@"
 }
 
-# tmux: attach or create session
-function t () {
-  tmux has-session 2> /dev/null && tmux attach || tmux
-}
-
 # Enable proxy settings (call in ~/.zshrc.local)
 function enable_proxy () {
   local port="$1"
@@ -264,18 +256,6 @@ function without_proxy () {
   http_proxy= https_proxy= "$@"
 }
 
-# OS X Notification
-function display_notification () {
-  osascript -e 'on run argv
-    display notification current date as text with title item 1 of argv
-  end run' -- "$*"
-}
-
-function with_display_notification () {
-  "$@"
-  display_notification "($?)" "$@"
-}
-
 # Random string generator
 function random_alphanum () {
   local length="$1"
@@ -287,12 +267,6 @@ function random_alphanumsym () {
   local length="$1"
   local count="$2"
   LANG=C tr -dc 'a-zA-Z0-9!#$%&()@/' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
-}
-
-# Build tools
-function gradle_dependency () {
-  local module="$1"
-  find ~/.gradle/caches -name "${module}*.jar" ! -name '*-sources.jar' -type f
 }
 
 
