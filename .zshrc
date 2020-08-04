@@ -110,6 +110,12 @@ function _kube_context_indicator () {
 }
 add-zsh-hook precmd _kube_context_indicator
 
+# Last command indicator
+function _last_command_indicator () {
+  _last_command_indicator="%{%F{cyan}%}$(date +%H:%M:%S) ${1:0:10}...%{%f%}"
+}
+add-zsh-hook preexec _last_command_indicator
+
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
   local now='%{%F{yellow}%}%*%{%f%}'
@@ -122,7 +128,7 @@ function {
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
   PROMPT="$dir $user($via$host) $rc \$_vcs_git_indicator \$_kube_context_indicator$terminal$mark"
-  RPROMPT="$up$now$down"
+  RPROMPT="$up \$_last_command_indicator $now$down"
 }
 
 function _window_title_cmd () {
