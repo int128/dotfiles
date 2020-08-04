@@ -206,6 +206,7 @@ esac
 
 alias ll='ls -lah'
 alias lt='ll -tr'
+alias k=kubectl
 
 # Enter demo style, e.g. taking a screenshot or live coding
 function demo_style () {
@@ -216,7 +217,7 @@ function demo_style () {
   print -n "\e]0;terminal\a"
 }
 
-# Kubernetes
+# Lazy-load kubectl completion
 function kubectl () {
   local real_kubectl="$(whence -p kubectl 2> /dev/null)"
   if [ "$real_kubectl" ]; then
