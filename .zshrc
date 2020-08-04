@@ -104,12 +104,6 @@ function _vcs_git_indicator () {
 }
 whence git >/dev/null && add-zsh-hook precmd _vcs_git_indicator
 
-# System load indicator
-function _sys_load_indicator () {
-  _sys_load_indicator="%{%F{green}%}${$(uptime)##*: }%{%f%}"
-}
-whence uptime >/dev/null && add-zsh-hook precmd _sys_load_indicator
-
 # Kubernetes context indicator
 function _kube_context_indicator () {
   # this will be set up in kubectl function (see below)
@@ -128,7 +122,7 @@ function {
   local up=$'%{\e[A%}'
   local down=$'%{\e[B%}'
   PROMPT="$dir $user($via$host) $rc \$_vcs_git_indicator \$_kube_context_indicator$terminal$mark"
-  RPROMPT="$up(\$_sys_load_indicator) $now$down"
+  RPROMPT="$up$now$down"
 }
 
 function _window_title_cmd () {
