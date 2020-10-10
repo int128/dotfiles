@@ -78,7 +78,7 @@ emoji[git_changed]=$'\U1F363 '
 emoji[git_untracked]=$'\U1F525 '
 emoji[git_clean]=$'\U2728 '
 emoji[right_arrow]=$'\U2794 '
-emoji[kube]=$'\U1F433 '
+emoji[kube]=$'\U1F4E6 '
 
 # Git indicator
 function _vcs_git_indicator () {
