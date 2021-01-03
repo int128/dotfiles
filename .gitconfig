@@ -7,18 +7,15 @@
 [alias]
   ci = commit
   co = checkout
-  com = checkout master
-  cod = checkout develop
+  com = "!git default-branch | xargs git checkout"
   cob = checkout -b
   dh = diff HEAD^
   ls = log --graph --decorate --oneline
   ll = log --graph --decorate --stat --pretty=fuller
   s = status --short --branch
   po = push origin
-  pom = push origin master
-  rom = rebase origin/master
-  rod = rebase origin/develop
+  rom = rebase origin/HEAD
   fo = fetch origin
-  fom = "!git com && git fo && git rpo && git rom"
-  fod = "!git cod && git fo && git rpo && git rod"
+  fom = "!git com && git fo && git rpo && git ro"
   rpo = remote prune origin
+  default-branch = "!git symbolic-ref --short refs/remotes/origin/HEAD | cut -f2 -d/"
