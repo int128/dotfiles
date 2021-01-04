@@ -16,6 +16,6 @@
   po = push origin
   rom = rebase origin/HEAD
   fo = fetch origin
-  fom = "!git com && git fo && git rpo && git ro"
+  fom = "!git com && git fo && git rpo && git rom"
   rpo = remote prune origin
   default-branch = "!git symbolic-ref --short refs/remotes/origin/HEAD | cut -f2 -d/"
