@@ -176,6 +176,12 @@ export EDITOR=vim
   export PATH="$PATH:$HOME/go/bin"
 }
 
+# Node
+[ -d ~/.nvm ] && {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s ~/.homebrew/opt/nvm/nvm.sh ] && . ~/.homebrew/opt/nvm/nvm.sh
+}
+
 # MacVim
 [ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
 
