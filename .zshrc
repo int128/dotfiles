@@ -216,6 +216,8 @@ alias lt='ll -tr'
 alias k=kubectl
 alias kctx='k config use-context'
 
+alias ghpc='gh pr create -fd'
+
 # Enter demo style, e.g. taking a screenshot or live coding
 function demo_style () {
   PROMPT="%{%F{blue}%B%}${emoji[right_arrow]}%{%b%f%} "
