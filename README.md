@@ -10,7 +10,7 @@ This is a dotfiles of my environment.
 git clone https://github.com/int128/dotfiles.git
 
 # Run the installation script
-./dotfiles/install.sh
+./dotfiles/install
 ```
 
 It supports the following platforms:
