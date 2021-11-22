@@ -4,7 +4,6 @@ cask_target=(
   # Desktop
   iterm2
   google-chrome
-  evernote
 
   # Development
   visual-studio-code
@@ -14,14 +13,12 @@ cask_target=(
   docker
 )
 
-brew cask install ${cask_target[*]}
+brew install --cask ${cask_target[*]}
 
 target=(
   # Development
   go
-  golangci/tap/golangci-lint
-  node
-  yarn
+  node@16
 
   # Infrastructure
   awscli
