@@ -162,33 +162,12 @@ export EDITOR=vim
   export PATH="$PATH:$HOME/bin"
 }
 
-# Homebrew
-[ -x ~/.homebrew/bin/brew ] && {
-  export PATH="$HOME/.homebrew/bin:$PATH"
-  export LD_LIBRARY_PATH="/usr/lib:$HOME/.homebrew/lib"
-}
-
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
 # Golang
 [ -d ~/go ] && {
   export PATH="$PATH:$HOME/go/bin"
-}
-
-# Node
-[ -d ~/.nvm ] && {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s ~/.homebrew/opt/nvm/nvm.sh ] && . ~/.homebrew/opt/nvm/nvm.sh
-}
-
-# MacVim
-[ -d /Applications/MacVim.app/Contents/bin ] && export PATH="/Applications/MacVim.app/Contents/bin:$PATH"
-
-# Google cloud
-[ -d ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk ] && {
-  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-  . ~/.homebrew/caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 }
 
 # Kubernetes
