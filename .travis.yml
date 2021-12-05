@@ -1,8 +1,0 @@
-language: sh
-addons:
-  apt:
-    packages:
-    - zsh
-script:
-- ./install.sh
-- zsh -l -c env
