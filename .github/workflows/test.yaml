@@ -1,0 +1,17 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./install
+      - run: sudo apt-get install -y zsh
+      - run: zsh -l -c env
