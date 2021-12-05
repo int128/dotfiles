@@ -10,13 +10,13 @@ cask_target=(
   goland
 
   # Infrastructure
-  docker
 )
 
 brew install --cask ${cask_target[*]}
 
 target=(
   # Development
+  gh
   go
   node@16
 
