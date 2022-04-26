@@ -196,6 +196,9 @@ alias k=kubectl
 alias kctx='k config use-context'
 
 alias ghpc='gh pr create -fd'
+alias ghco='gh pr checkout'
+alias ghrw='gh run watch'
+
 alias asl='aws sso login'
 
 # Enter demo style, e.g. taking a screenshot or live coding
