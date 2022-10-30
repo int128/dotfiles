@@ -18,7 +18,6 @@ It supports the following platforms:
 - [macOS](macos)
 - [Google Cloud Shell](cloudshell)
 - [Windows Subsystem for Linux (WSL)](wsl)
-- [MSYS2](msys2) (deprecated)
 
 You need to set up the credentials.
 
