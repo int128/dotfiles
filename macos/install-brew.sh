@@ -10,6 +10,7 @@ cask_target=(
   goland
 
   # Infrastructure
+  session-manager-plugin
 )
 
 brew install --cask ${cask_target[*]}
