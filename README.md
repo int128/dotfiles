@@ -2,7 +2,6 @@
 
 This is a dotfiles of my environment.
 
-
 ## Getting Started
 
 ```sh
@@ -46,4 +45,12 @@ host i-* mi-*
   ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
   User ssm-user
   ServerAliveInterval 60
+```
+
+## Sandbox
+
+To run an ephemeral pod:
+
+```sh
+k run --rm -it --image ghcr.io/int128/dotfiles:main int128-sandbox
 ```
