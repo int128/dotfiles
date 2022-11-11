@@ -12,10 +12,11 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
-      - run: ./install
       - run: sudo apt-get install -y zsh
+      - run: ./install
       - run: zsh -l -c env
 
+      - run: ln -s .Xdefaults ~/.Xdefaults
       - run: sudo apt-get install -y xvfb xterm
       - run: xvfb-run --auto-servernum bash .github/screenshot.sh
       - uses: actions/upload-artifact@v3
