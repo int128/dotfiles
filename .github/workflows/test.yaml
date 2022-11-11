@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v3
       - run: sudo apt-get install -y xvfb x11-apps
-      - run: |
-          xvfb-run --auto-servernum xeyes &
-          sleep 5
-          xvfb-run --auto-servernum import -window root screenshot.jpg
+      - run: xvfb-run --auto-servernum bash .github/screenshot.sh
       - uses: actions/upload-artifact@v3
         with:
           name: screenshot
           path: screenshot.jpg
 
-      - uses: actions/checkout@v3
-      - run: ./install
-      - run: sudo apt-get install -y zsh
-      - run: zsh -l -c env
+      # - run: ./install
+      # - run: sudo apt-get install -y zsh
+      # - run: zsh -l -c env
