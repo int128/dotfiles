@@ -1,4 +1,4 @@
-# dotfiles [![Build Status](https://travis-ci.org/int128/dotfiles.svg?branch=master)](https://travis-ci.org/int128/dotfiles)
+# dotfiles [![build](https://github.com/int128/dotfiles/actions/workflows/build.yaml/badge.svg)](https://github.com/int128/dotfiles/actions/workflows/build.yaml)
 
 This is a dotfiles of my environment.
 
