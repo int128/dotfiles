@@ -16,8 +16,8 @@ jobs:
       - run: ./install
       - run: zsh -l -c env
 
-      - run: ln -sf .bashrc ~/.bashrc
-      - run: ln -sf .Xdefaults ~/.Xdefaults
+      - run: ln -sf $PWD/.bashrc ~/.bashrc
+      - run: ln -sf $PWD/.Xdefaults ~/.Xdefaults
       - run: sudo apt-get install -y xvfb xterm x11-xserver-utils
       - run: xvfb-run --auto-servernum bash .github/screenshot.sh
       - uses: actions/upload-artifact@v3
