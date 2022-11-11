@@ -18,7 +18,7 @@ jobs:
 
       - run: ln -sf .bashrc ~/.bashrc
       - run: ln -sf .Xdefaults ~/.Xdefaults
-      - run: sudo apt-get install -y xvfb xterm
+      - run: sudo apt-get install -y xvfb xterm x11-xserver-utils
       - run: xvfb-run --auto-servernum bash .github/screenshot.sh
       - uses: actions/upload-artifact@v3
         with:
