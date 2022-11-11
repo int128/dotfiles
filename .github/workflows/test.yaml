@@ -16,6 +16,7 @@ jobs:
       - run: ./install
       - run: zsh -l -c env
 
+      - run: ln -s .bashrc ~/.bashrc
       - run: ln -s .Xdefaults ~/.Xdefaults
       - run: sudo apt-get install -y xvfb xterm
       - run: xvfb-run --auto-servernum bash .github/screenshot.sh
