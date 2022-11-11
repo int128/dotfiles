@@ -1,4 +1,7 @@
 #!/bin/bash
+set -eux
+
+xrdb ~/.Xdefaults
 
 #export SHELL=/bin/zsh
 xterm &
