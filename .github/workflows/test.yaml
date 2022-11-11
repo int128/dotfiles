@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - run: sudo apt-get install -y xvfb xeyes
+      - run: sudo apt-get install -y xvfb x11-apps
       - run: |
           xvfb-run --auto-servernum xeyes &
           sleep 5
