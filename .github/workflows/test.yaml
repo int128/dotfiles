@@ -19,7 +19,7 @@ jobs:
       - run: ln -sf $PWD/.bashrc ~/.bashrc
       - run: ln -sf $PWD/.Xdefaults ~/.Xdefaults
       - run: sudo apt-get install -y xvfb xterm x11-xserver-utils
-      - run: xvfb-run --auto-servernum -s '640x480x24' bash .github/screenshot.sh
+      - run: xvfb-run -s 'oq-screen 0 640x480x24' bash .github/screenshot.sh
       - uses: actions/upload-artifact@v3
         with:
           name: screenshot
