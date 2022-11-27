@@ -23,6 +23,10 @@ autoload -Uz add-zsh-hook
 bindkey -e
 
 # ctrl+arrow
+# on macOS Terminal
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+
 # on iterm
 # on WSL on ConEmu
 bindkey '^[[1;5A' history-beginning-search-backward
