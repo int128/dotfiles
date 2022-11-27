@@ -162,6 +162,9 @@ export EDITOR=vim
   export PATH="$PATH:$HOME/bin"
 }
 
+# Homebrew
+[ -d /opt/homebrew/bin ] && export PATH="$PATH:/opt/homebrew/bin"
+
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
