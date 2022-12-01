@@ -2,7 +2,6 @@
 
 cask_target=(
   # Desktop
-  iterm2
   google-chrome
 
   # Development
