@@ -11,3 +11,10 @@ on:
 jobs:
   docker:
     uses: int128/docker-build-workflow/.github/workflows/build.yaml@v1
+
+  test:
+    needs: docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: docker run --rm 'ghcr.io/${{ github.repository }}@${{ needs.docker.outputs.digest }}'
