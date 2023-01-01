@@ -1,9 +1,11 @@
 FROM debian:11
 
-RUN apt-get update && apt-get install -y apt-utils zsh locales git curl vim
+# set the locale as https://hub.docker.com/_/debian/
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
 
-# fix error zsh: character not in range
-RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
+RUN apt-get install -y zsh git curl vim
 
 ENV HOME /root
 COPY . /root/dotfiles
