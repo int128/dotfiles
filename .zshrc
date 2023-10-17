@@ -52,6 +52,8 @@ setopt hist_save_no_dups
 setopt hist_reduce_blanks
 
 # Completion
+autoload bashcompinit
+bashcompinit
 autoload -U compinit
 compinit -u
 
@@ -63,6 +65,9 @@ if [ "$LS_COLORS" ]; then
 else
   zstyle ':completion:*' list-colors di=34 ln=35 ex=31
 fi
+
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
+complete -C aws_completer aws
 
 # Prompt
 setopt prompt_subst
