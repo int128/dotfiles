@@ -9,7 +9,7 @@
   co = checkout
   com = "!git default-branch | xargs git checkout"
   cob = checkout -B
-  cnew = "!git cob int128/$(date +%y%m%dt%H%M%S)"
+  new = "!git log -1 --format=%s HEAD | perl -pe 'chomp; s/[^\\w]/-/g; s|^|int128/|g' | xargs git branch -m"
   dh = diff HEAD^
   ls = log --graph --decorate --oneline
   ll = log --graph --decorate --stat --pretty=fuller
