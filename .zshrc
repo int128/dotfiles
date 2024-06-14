@@ -169,14 +169,19 @@ export EDITOR=vim
 # PostgreSQL
 [ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
 
-# Golang
+# Go
 [ -d ~/go ] && {
   export PATH="$PATH:$HOME/go/bin"
 }
 
-# Kubernetes
+# krew
 [ -d ~/.krew ] && {
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+}
+
+# aqua
+[ -d ~/.local/share/aquaproj-aqua/bin ] && {
+  export PATH="$PATH:$HOME/.local/share/aquaproj-aqua/bin"
 }
 
 
