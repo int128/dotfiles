@@ -204,10 +204,8 @@ alias lt='ll -tr'
 alias k=kubectl
 alias kctx='k config use-context'
 
-alias ghpc='gh pr create -fd'
-alias ghpv='gh pr view -w'
+alias ghpc='gh pr create -fd; gh pr view -w'
 alias ghco='gh pr checkout'
-alias ghrw='gh run watch'
 
 alias asl='aws sso login'
 
