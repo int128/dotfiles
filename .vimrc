@@ -11,20 +11,6 @@ set directory=$dotvim/tmp/
 set undofile
 set undodir=$dotvim/tmp/
 
-" NeoBundle
-set runtimepath+=$dotvim/bundle/neobundle.vim/
-call neobundle#begin($dotvim . '/bundle/')
-
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'airblade/vim-gitgutter'
-
-call neobundle#end()
-filetype plugin indent on
-
 " Appearance
 set t_Co=256
 syntax on
@@ -45,9 +31,5 @@ set tabstop=2
 set expandtab
 set smarttab
 
-autocmd BufNewFile,BufRead *.adoc setlocal filetype=asciidoc
-autocmd BufNewFile,BufRead *.gradle setlocal filetype=groovy
-
 " Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
