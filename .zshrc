@@ -207,6 +207,11 @@ alias ghco='gh pr checkout'
 alias asl='aws sso login'
 
 function ghpc () {
+  if [[ "$(git branch --show-current)" == "$(git default-branch)" ]]; then
+    local branch_name="$(git log -1 --format=%s HEAD | perl -pe 'chomp; s/[^\w]/-/g; s|^|int128/|g')"
+    echo "Creating a new branch $branch_name" > /dev/stderr
+    git branch -m "$branch_name"
+  fi
   gh pr create -fd "$@"
   gh pr view -w
 }
