@@ -16,7 +16,6 @@ It supports the following platforms:
 
 - [macOS](macos)
 - [Google Cloud Shell](cloudshell)
-- [Windows Subsystem for Linux (WSL)](wsl)
 
 You can put environment specific configuration to `.zshrc.local`.
 For example,
