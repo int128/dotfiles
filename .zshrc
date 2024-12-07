@@ -6,12 +6,14 @@
 
 umask 022
 
-[ -z "$LANG" ] && {
+if [ -z "$LANG" ]; then
   export LANG="en_US.UTF-8"
   export LC_ALL="$LANG"
-}
+fi
 
-[ -z "$SHELL" ] && export SHELL=/bin/zsh
+if [ -z "$SHELL" ]; then
+  export SHELL=/bin/zsh
+fi
 
 #
 # General settings
@@ -113,7 +115,7 @@ add-zsh-hook precmd _kube_context_indicator
 
 # Last command indicator
 function _last_command_indicator () {
-  _last_command_indicator="%{%F{cyan}%}$(date +%H:%M:%S) ${1:0:10}...%{%f%}"
+  _last_command_indicator="%{%F{cyan}%}$(date +%H:%M:%S) ${1:0:15}...%{%f%}"
 }
 add-zsh-hook preexec _last_command_indicator
 
@@ -146,10 +148,10 @@ function _window_title_exec () {
   print -n "\a"
 }
 
-[[ "$TERM" =~ "^xterm" ]] && {
+if [[ "$TERM" =~ "^xterm" ]]; then
   add-zsh-hook precmd _window_title_cmd
   add-zsh-hook preexec _window_title_exec
-}
+fi
 
 
 #
@@ -159,30 +161,29 @@ function _window_title_exec () {
 export EDITOR=vim
 
 # Per-user bin
-[ -d ~/bin ] && {
+if [ -d "$HOME/bin" ]; then
   export PATH="$PATH:$HOME/bin"
-}
+fi
 
 # Homebrew
-[ -d /opt/homebrew/bin ] && export PATH="$PATH:/opt/homebrew/bin"
-
-# PostgreSQL
-[ -d ~/.pgdata ] && export PGDATA="$HOME/.pgdata"
+if [ -d /opt/homebrew/bin ]; then
+  export PATH="$PATH:/opt/homebrew/bin"
+fi
 
 # Go
-[ -d ~/go ] && {
+if [ -d "$HOME/go/bin" ]; then
   export PATH="$PATH:$HOME/go/bin"
-}
+fi
 
 # krew
-[ -d ~/.krew ] && {
+if [ -d "${KREW_ROOT:-$HOME/.krew}/bin" ]; then
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-}
+fi
 
 # aqua
-[ -d ~/.local/share/aquaproj-aqua/bin ] && {
+if [ -d "$HOME/.local/share/aquaproj-aqua/bin" ]; then
   export PATH="$PATH:$HOME/.local/share/aquaproj-aqua/bin"
-}
+fi
 
 
 #
@@ -200,14 +201,15 @@ esac
 
 alias ll='ls -lah'
 alias lt='ll -tr'
-
 alias k=kubectl
 alias kctx='k config use-context'
-
-alias ghpc='gh pr create -fd; gh pr view -w'
 alias ghco='gh pr checkout'
-
 alias asl='aws sso login'
+
+function ghpc () {
+  gh pr create -fd "$@"
+  gh pr view -w
+}
 
 # Enter demo style, e.g. taking a screenshot or live coding
 function demo_style () {
@@ -258,26 +260,15 @@ function without_proxy () {
   http_proxy= https_proxy= "$@"
 }
 
-# Random string generator
-function random_alphanum () {
-  local length="$1"
-  local count="$2"
-  LANG=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
-}
-
-function random_alphanumsym () {
-  local length="$1"
-  local count="$2"
-  LANG=C tr -dc 'a-zA-Z0-9!#$%&()@/' < /dev/urandom | fold -w "${length:-16}" | head -n "${count:-3}"
-}
-
 
 #
 # More
 #
 
 # Apply environment specific settings if exists
-[ -f ~/.zshrc.local ] && . ~/.zshrc.local
+if [ -f ~/.zshrc.local ]; then
+  . ~/.zshrc.local
+fi
 
 # Set final return value to 0 (shown in prompt)
 true
