@@ -81,7 +81,7 @@ emoji[git_changed]=$'\U1F363 '
 emoji[git_untracked]=$'\U1F525 '
 emoji[git_clean]=$'\U2728 '
 emoji[right_arrow]=$'\U2794 '
-emoji[kube]=$'\U1F4E6 '
+emoji[kube]=$'\U2388 '
 
 # Git indicator
 function _vcs_git_indicator () {
@@ -237,7 +237,7 @@ function kubectl () {
   function _kube_context_indicator () {
     local current_context="$(kubectl config current-context 2> /dev/null)"
     if [ "$current_context" ]; then
-      _kube_context_indicator="${emoji[kube]} %{%F{blue}%}$current_context%{%f%}"
+      _kube_context_indicator="${emoji[kube]}%{%F{blue}%}$current_context%{%f%}"
     else
       _kube_context_indicator=""
     fi
