@@ -1,4 +1,4 @@
-FROM debian:12.8@sha256:6001f38763856a0181c479eb4844467ea3dcb843335e0d8404e6b366a271c9ae
+FROM debian:12.8@sha256:b877a1a3fdf02469440f1768cf69c9771338a875b7add5e80c45b756c92ac20a
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
