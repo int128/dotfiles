@@ -24,22 +24,15 @@ autoload -Uz add-zsh-hook
 # Key bindings
 bindkey -e
 
-# ctrl+arrow
-# (iterm)
-bindkey '^[[1;5A' history-beginning-search-backward
-bindkey '^[[1;5B' history-beginning-search-forward
-# (iterm, macOS terminal)
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
-
-# alt+arrow
-# (iterm)
-bindkey '^[^[[D' beginning-of-line
-bindkey '^[^[[C' end-of-line
-# (macOS terminal)
-bindkey '^[b' beginning-of-line
-bindkey '^[f' end-of-line
-
+# iterm (sequoia)
+# option+left
+bindkey '^[[1;3D' backward-word
+# option+right
+bindkey '^[[1;3C' forward-word
+# option+up
+bindkey '^[[1;3A' history-beginning-search-backward
+# option+down
+bindkey '^[[1;3B' history-beginning-search-forward
 
 # History
 HISTFILE=~/.zhistory
