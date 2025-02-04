@@ -202,7 +202,7 @@ alias asl='aws sso login'
 function ghpc () {
   local branch_name="$(git log -1 --format=%s HEAD | perl -pe 'chomp; s/[^\w]/-/g; s|^|int128/|g')"
   echo "Switching to the branch $branch_name" > /dev/stderr
-  git branch -m "$branch_name"
+  git branch --move --force "$branch_name"
   git po -u "$branch_name:$branch_name"
   gh pr create -fd --head "$branch_name" "$@"
   gh pr view -w
