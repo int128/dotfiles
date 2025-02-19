@@ -199,6 +199,10 @@ alias kctx='k config use-context'
 alias ghco='gh pr checkout'
 alias asl='aws sso login'
 
+if which code-insiders > /dev/null; then
+  alias code=code-insiders
+fi
+
 function ghpc () {
   local branch_name="$(git log -1 --format=%s HEAD | perl -pe 'chomp; s/[^\w]/-/g; s|^|int128/|g')"
   echo "Switching to the branch $branch_name" > /dev/stderr
