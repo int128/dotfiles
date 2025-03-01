@@ -16,7 +16,7 @@ jobs:
       contents: read
       packages: write
     outputs:
-      image-uri: ghcr.io/${{ github.repository }}@${{ steps.build.outputs.digest }}
+      image-uri: ${{ steps.build-metadata.outputs.image-uri }}
     steps:
       - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
         with:
@@ -44,6 +44,10 @@ jobs:
           platforms: |
             linux/amd64
             linux/arm64
+      - uses: int128/docker-build-metadata-action@fac3c879c58b212e339c5e959cabb865cbee0c6e # v1.0.0
+        id: build-metadata
+        with:
+          metadata: ${{ steps.build.outputs.metadata }}
 
   test:
     needs: docker
