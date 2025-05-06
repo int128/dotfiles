@@ -16,4 +16,4 @@
   rom = rebase origin/HEAD
   fo = fetch origin --prune
   fom = "!git com && git fo && git rom"
-  default-branch = "!git symbolic-ref --short refs/remotes/origin/HEAD | cut -f2 -d/"
+  default-branch = "!git rev-parse --symbolic-full-name origin/HEAD | cut -f4 -d/"
