@@ -18,7 +18,7 @@ RUN useradd -m --shell /bin/zsh --uid 1000 int128 && \
     echo 'int128 ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/int128
 USER int128
 WORKDIR /home/int128
-COPY . dotfiles
+COPY --chown=1000:1000 . dotfiles
 RUN ./dotfiles/install
 
 CMD ["/bin/zsh", "-l"]
