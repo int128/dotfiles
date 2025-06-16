@@ -1,4 +1,4 @@
-FROM debian:12.11@sha256:0d8498a0e9e6a60011df39aab78534cfe940785e7c59d19dfae1eb53ea59babe
+FROM debian:12.11-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
