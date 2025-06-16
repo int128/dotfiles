@@ -5,17 +5,20 @@ RUN apt-get update && \
     ca-certificates \
     zsh \
     locales \
+    sudo \
     git \
     curl \
     dnsutils \
     vim
 
-# fix error zsh: character not in range
+# Fix error zsh: character not in range
 RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
-ENV HOME=/root
-COPY . /root/dotfiles
-RUN /root/dotfiles/install
+RUN useradd -m --shell /bin/zsh --uid 1000 int128 && \
+    echo 'int128 ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/int128
+USER int128
+WORKDIR /home/int128
+COPY . dotfiles
+RUN ./dotfiles/install
 
-WORKDIR /root
 CMD ["/bin/zsh", "-l"]
