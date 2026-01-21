@@ -6,7 +6,6 @@ cask_target=(
 
   # Development
   visual-studio-code
-  goland
 )
 
 brew install --cask ${cask_target[*]}
