@@ -4,5 +4,16 @@
     "github>int128/renovate-base",
     "helpers:pinGitHubActionDigests"
   ],
-  "minimumReleaseAgeBehaviour": "timestamp-optional"
+  "packageRules": [
+    {
+      "description": "Disable minimumReleaseAge for digest updates to avoid pending forever",
+      "matchDepNames": [
+        "debian"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "minimumReleaseAge": "0"
+    }
+  ]
 }
