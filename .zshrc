@@ -208,6 +208,12 @@ function ghpc () {
   gh pr view -w
 }
 
+function codenew () {
+  local branch_name="$(basename "$PWD")--$(date +%Y%m%dt%H%M%S)"
+  git worktree add "../$branch_name" origin/HEAD
+  code "../$branch_name"
+}
+
 # Enter demo style, e.g. taking a screenshot or live coding
 function demo_style () {
   PROMPT="%{%F{blue}%B%}${emoji[right_arrow]}%{%b%f%} "
