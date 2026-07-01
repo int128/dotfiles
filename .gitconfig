@@ -7,7 +7,7 @@
 [alias]
   ci = commit
   co = checkout
-  com = "!git default-branch | xargs git checkout"
+  com = checkout origin/HEAD
   cob = checkout -B
   ls = log --graph --decorate --oneline
   ll = log --graph --decorate --stat --pretty=fuller
@@ -15,5 +15,4 @@
   po = push origin
   rom = rebase origin/HEAD
   fo = fetch origin --prune
-  fom = "!git com && git fo && git rom"
-  default-branch = "!git rev-parse --symbolic-full-name origin/HEAD | cut -f4 -d/"
+  fom = "!git fo && git com"
