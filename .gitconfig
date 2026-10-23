@@ -3,7 +3,10 @@
 [pull]
   rebase = true
 [push]
-  default = tracking
+  default = current
+  autoSetupRemote = true
+[branch]
+  autoSetupMerge = simple
 [alias]
   ci = commit
   co = checkout
