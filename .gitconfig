@@ -19,3 +19,8 @@
   rom = rebase origin/HEAD -i
   fo = fetch origin --prune
   fom = "!git fo && git com"
+
+# https://github.com/suzuki-shunsuke/ghtkn/blob/main/docs/git-credential-helper.md
+[credential]
+	helper =
+	helper = !ghtkn git-credential

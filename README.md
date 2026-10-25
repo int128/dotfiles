@@ -27,9 +27,6 @@ git clone https://github.com/int128/dotfiles.git
 
 See also [macOS](macos) for the additional setup.
 
-You can put environment specific configuration to `.zshrc.local`.
-For example,
+Install [aqua](https://aquaproj.github.io/docs/install).
 
-```zsh
-echo enable_proxy >> .zshrc.local
-```
+You can put environment specific configuration to `.zshrc.local`.

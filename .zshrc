@@ -176,6 +176,7 @@ fi
 # aqua
 if [ -d "$HOME/.local/share/aquaproj-aqua/bin" ]; then
   export PATH="$PATH:$HOME/.local/share/aquaproj-aqua/bin"
+  export AQUA_GLOBAL_CONFIG="$HOME/dotfiles/aqua.yaml"
 fi
 
 
@@ -198,6 +199,11 @@ alias k=kubectl
 alias kctx='k config use-context'
 alias ghco='gh pr checkout'
 alias asl='aws sso login'
+
+# https://github.com/suzuki-shunsuke/ghtkn
+function gh () {
+  ghtkn exec -e GH_TOKEN -- gh "$@"
+}
 
 function ghpc () {
   local branch_name="$(git log -1 --format=%s HEAD | perl -pe 'chomp; s/[^\w]/-/g; s|^|int128/|g')"
