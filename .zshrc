@@ -179,6 +179,9 @@ if [ -d "$HOME/.local/share/aquaproj-aqua/bin" ]; then
   export AQUA_GLOBAL_CONFIG="$HOME/dotfiles/aqua.yaml"
 fi
 
+# https://github.com/suzuki-shunsuke/ghtkn/blob/main/docs/token-management.md#bulb-copying-a-one-time-code-to-clipboard-automatically
+export GHTKN_CLIPBOARD=true
+
 
 #
 # Aliases and functions
@@ -199,10 +202,11 @@ alias k=kubectl
 alias kctx='k config use-context'
 alias ghco='gh pr checkout'
 alias asl='aws sso login'
+alias gha='ghtkn auth'
 
 # https://github.com/suzuki-shunsuke/ghtkn
 function gh () {
-  ghtkn exec -e GH_TOKEN -- gh "$@"
+  ghtkn exec -- gh "$@"
 }
 
 function ghpc () {
