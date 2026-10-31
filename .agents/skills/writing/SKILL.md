@@ -1,12 +1,12 @@
 ---
-name: japanese-writing
-description: Use when writing a document or pull request description in Japanese
+name: writing
+description: Use when writing a document, issue or pull request
 user-invocable: false
 ---
 
-日本語でドキュメントを書く場合は、以下のスタイルに従ってください。
+文章を書く場合は、以下のスタイルに従ってください。
 
-- 丁寧体 (ですます調) で統一する。
+- 日本語の場合は丁寧体 (ですます調) で統一する。
 - 1文1意味で簡潔に書く。修飾語を重ねない。
 - 言葉を列挙する場合は `、` で区切る。英単語を列挙する場合は `, ` (半角カンマ) で区切る。
 - 曖昧表現は避け、断定的に書く。確定していない事項は「予定です」「作業中です」のように事実として明示する。
