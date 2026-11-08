@@ -1,0 +1,20 @@
+{
+  "name": "int128-opinionated",
+  "owner": {
+    "name": "int128"
+  },
+  "metadata": {
+    "description": "My opinionated plugin"
+  },
+  "plugins": [
+    {
+      "name": "int128",
+      "source": "./",
+      "description": "My opinionated skills",
+      "skills": [
+        "./.agents/skills/"
+      ],
+      "strict": false
+    }
+  ]
+}
